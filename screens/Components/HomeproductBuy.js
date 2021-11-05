@@ -18,11 +18,11 @@ const HomeproductBuy = props => {
             <TouchableOpacity style={props.Pro_List, styles.boxItem} key={ele.id} onPress={() => editColor(ele)} >
                 <View style={styles.menuBrand}>
                     <View style={styles.Pro_image}>
-                        <Image source={{url:ele.product_image[0].path}} style={styles.imagestyle} />
+                        <Image source={{url:ele.cover}} style={styles.imagestyle} />
                     </View>
                     <View style={styles.Pro_detail}>
                         <Text style={styles.nameBrand}>{ele.name}</Text>
-                        <Text style={{fontSize:11,color:'gray'}}>burger  / American food</Text>
+                        <Text style={{fontSize:11,color:'gray'}}>{ele.city}</Text>
                         <Star score={4} style={styles.starStyle} />
 
                     </View>

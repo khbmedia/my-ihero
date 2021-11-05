@@ -5,7 +5,8 @@ const initialState={
 }
 const WithdrawReducer=(state=initialState,action)=>{
     switch(action.type){
-        case WITHDRAW:return {...state,data:action.data}
+        case WITHDRAW:return {...state,data:action.data};
+        default:return state;
     }
 }
 export default WithdrawReducer;

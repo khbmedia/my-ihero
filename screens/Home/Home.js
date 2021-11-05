@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, Text, ScrollView, Keyboard } from 'react-native';
 import { NativeBaseProvider, VStack, Input, Icon, Tabs } from 'native-base';
-import Datajson from '../Components/Datajson';
 import Product from '../Components/Product';
 import HomeproductBuy from '../Components/HomeproductBuy';
 
-import { EvilIcons, Ionicons, FontAwesome5, SimpleLineIcons } from '@expo/vector-icons';
+import { EvilIcons, Ionicons, FontAwesome5, SimpleLineIcons,AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
+import { useDispatch,useSelector } from 'react-redux';
+import {getAllShop} from "../../store/shop/action";
+import {getAllItem,getFavorite,getTopRate} from "../../store/item/action";
+import Color from '../../constant/Color';
 const Home = ({navigation }) => {
-    const [ProBuy, setProBuyData] = useState([]);
-    const [Data, setList] = useState([]);
+    const shopData=useSelector(state=>state.shops)
+    const items=useSelector(state=>state.items)
+    const dispatch=useDispatch();
     useEffect(() => {
-        setProBuyData(Datajson.data.success.data);
-        setList(Datajson.data.success.data);
-    }, []);
+        dispatch(getAllShop());
+        dispatch(getAllItem());
+        dispatch(getFavorite());
+        dispatch(getTopRate());
+    }, [dispatch]);
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <View style={{ backgroundColor: '#0A8791', flex: 1, borderBottomRightRadius: 50, }}>
+                <View style={{ backgroundColor: Color.bgPrimary, flex: 1, borderBottomRightRadius: 50, }}>
                     <View style={styles.box}>
                         <View style={{ flexDirection: 'row' }}>
                             <EvilIcons name="location" size={24} color="white" style={{}} />
@@ -33,9 +39,8 @@ const Home = ({navigation }) => {
                                     <Input borderRadius={10}
                                         placeholder="Search"
                                         variant="filled"
-                                        width='90%'
+                                        width='98%'
                                         py={3}
-                                        // keyboardType="text"
                                         px={1} 
                                         InputLeftElement={<Icon size='sm' ml={2} size={5} color="gray.400" as={<Ionicons name="ios-search" />} />}
                                         InputLeftElement={<Icon size='sm' ml={2} size={5} color="gray.400" as={<Ionicons name="ios-search" />} />}
@@ -64,43 +69,37 @@ const Home = ({navigation }) => {
                         <ScrollView showsVerticalScrollIndicator={false}>
                             <View style={{ flex: 9,marginBottom:10 }}>
                                 <View style={styles.rootproduct}>
-                                    <Text style={{ fontSize: 16, fontWeight: '700' }} color='#0A8791' paddingLeft={2}>Shop</Text>
-                                    <Text style={styles.seemore} >See all</Text>
+                                    <Text style={{ fontSize: 16, fontWeight: '700' }} color={Color.bgPrimary} paddingLeft={2}>Shop</Text>
+                                    <AntDesign name="arrowright" style={styles.seemore} size={24} color={Color.textPrimary} />
                                 </View> 
                                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
                                     <View style={styles.rootcomponent}>
-                                        <HomeproductBuy Pro_List={ProBuy} />
+                                        <HomeproductBuy Pro_List={shopData.data} />
                                     </View>
                                 </ScrollView>
                             </View>
                             <View style={{ flex: 7, }}>
                                 <NativeBaseProvider>
                                     <Tabs align='center' colorScheme="warning" >
-                                        <Tabs.Bar backgroundColor='white' >
-                                            <Tabs.Tab>Recent</Tabs.Tab>
-                                            <Tabs.Tab active={true} >Favorite</Tabs.Tab>
-                                            <Tabs.Tab>Top Tating</Tabs.Tab>
-                                            <Tabs.Tab>For Sells</Tabs.Tab>
+                                        <Tabs.Bar backgroundColor={Color.bgPrimary} >
+                                            <Tabs.Tab>All Menu</Tabs.Tab>
+                                            <Tabs.Tab>Favorite</Tabs.Tab>
+                                            <Tabs.Tab>Top Rating</Tabs.Tab>
                                         </Tabs.Bar>
                                         <Tabs.Views>
                                             <Tabs.View> 
                                                 <View style={styles.Container}>
-                                                    <Product Pro_List={Data} />
+                                                    <Product Pro_List={items.allItem} />
                                                 </View>
                                             </Tabs.View>
                                             <Tabs.View> 
                                                 <View style={styles.Container}>
-                                                    <Product Pro_List={Data} />
+                                                    <Product Pro_List={items.favorite} />
                                                 </View>
                                             </Tabs.View>
                                             <Tabs.View> 
                                                 <View style={styles.Container}>
-                                                    <Product Pro_List={Data} />
-                                                </View>
-                                            </Tabs.View>
-                                            <Tabs.View> 
-                                                <View style={styles.Container}>
-                                                    <Product Pro_List={Data} />
+                                                    <Product Pro_List={items.topRate} />
                                                 </View>
                                             </Tabs.View>
                                         </Tabs.Views>
@@ -129,7 +128,7 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 8,
-        backgroundColor: '#0A8791',
+        backgroundColor: Color.bgPrimary,
         borderBottomRightRadius: 50,
     },
     content1: {
@@ -171,7 +170,7 @@ const styles = StyleSheet.create({
         paddingLeft: 20
     },
     seemore: {
-        color: 'red',
+        color: Color.textPrimary,
         fontSize: 14,
         marginRight: 6
     },

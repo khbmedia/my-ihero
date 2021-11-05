@@ -1,7 +1,4 @@
 
-import * as React from "react";
-import { Entypo } from '@expo/vector-icons';
-import Star from 'react-native-star-view';
 import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from '@expo/vector-icons';
@@ -10,7 +7,7 @@ const ProductList = props => {
     const ProductDetailScreen = (ele) => {
         navigation.navigate("ShopProfile"); 
     }
-    return props.Pro_List.map
+    return props.Pro_List?props.Pro_List.map
         (ele =>
             <TouchableOpacity style={props.Pro_List, styles.boxItem} key={ele.id} onPress={() => ProductDetailScreen(ele)} >
                 <View style={styles.menuBrand}>
@@ -34,7 +31,7 @@ const ProductList = props => {
                     </View>
                 </View>
             </TouchableOpacity>
-        )
+        ):(false)
 }
 const styles = StyleSheet.create({
     boxItem: {
