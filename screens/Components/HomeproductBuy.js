@@ -1,18 +1,16 @@
 import * as React from "react";
-import { Entypo } from '@expo/vector-icons';
 import Star from 'react-native-star-view';
 import { View, StyleSheet, Text, TouchableOpacity,Image } from 'react-native';
+import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
-import { borderRadius } from "styled-system";
+import Color from "../../constant/Color";
+import { color } from "react-native-reanimated";
 const HomeproductBuy = props => { 
     const navigation = useNavigation();
     const editColor = (ele) => {
-          navigation.navigate("ShopProfile" );
-    //       navigation.navigate("ProductStack",{ screen: "ProducDetail",params: {ele} 
-    // });
-        // // navigation.goBack();
-        console.log('OUT'); 
+          navigation.navigate("ShopProfile",ele );
     }
+
     return props.Pro_List.map
         (ele =>
             <TouchableOpacity style={props.Pro_List, styles.boxItem} key={ele.id} onPress={() => editColor(ele)} >
@@ -22,7 +20,8 @@ const HomeproductBuy = props => {
                     </View>
                     <View style={styles.Pro_detail}>
                         <Text style={styles.nameBrand}>{ele.name}</Text>
-                        <Text style={{fontSize:11,color:'gray'}}>{ele.city}</Text>
+
+                        <Text style={{fontSize:11,color:Color.textPrimary}}><Entypo name="location-pin" size={15} color={Color.textPrimary} />{ele.city}</Text>
                         <Star score={4} style={styles.starStyle} />
 
                     </View>
@@ -33,7 +32,7 @@ const HomeproductBuy = props => {
 const styles = StyleSheet.create({
     boxItem: {
         height: 205,
-        width: 220,
+        width: "100%",
         borderRadius: 9, 
         marginHorizontal:5,
         backgroundColor: '#fffFFF',
@@ -71,7 +70,8 @@ const styles = StyleSheet.create({
     },
     nameBrand: {
         fontSize: 17,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color:Color.bgPrimary
     },
     pro_price: {
         color: 'red',

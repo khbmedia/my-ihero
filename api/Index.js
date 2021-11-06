@@ -35,8 +35,8 @@ export const Item={
         });
     return result;
     },
-    getWishlist:async (id,token)=>{
-    let result=await axios.delete('/wishlist',null,{
+    getWishlist:async (token)=>{
+    let result=await axios.get('/wishlist',null,{
         headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + token,
@@ -84,6 +84,10 @@ export const Shop={
     },
     getShopById:async (shopId)=>{
         let result=await axios.get('/home-front-resturant/'+shopId);
+        return result;
+    },
+    getTopRateShop:async ()=>{
+        let result=await axios.get("/home-front-resturant");
         return result;
     }
 

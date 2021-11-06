@@ -12,10 +12,15 @@ import ListFood from '../Components/Food/ListFood';
 import { Feather, AntDesign, Ionicons } from '@expo/vector-icons';
 import { ImageBackground } from 'react-native';
 const { width, height } = Dimensions.get("window");
-const ShopProfile = ({ navigation }) => {
+const ShopProfile = ({ route,navigation }) => {
+    const {params}=route;
+    
     const [Data, setData] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
     useEffect(() => {
+        navigation.setOptions({
+            title:params.name
+        })
         setData(Datajson.data.success.data); 
     }, []);
     const [num, setNum] = useState(1);

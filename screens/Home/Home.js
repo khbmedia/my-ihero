@@ -1,58 +1,32 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { View, StyleSheet, Text, ScrollView, Keyboard } from 'react-native';
 import { NativeBaseProvider, VStack, Input, Icon, Tabs } from 'native-base';
 import Product from '../Components/Product';
 import HomeproductBuy from '../Components/HomeproductBuy';
-
 import { EvilIcons, Ionicons, FontAwesome5, SimpleLineIcons,AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 import { useDispatch,useSelector } from 'react-redux';
-import {getAllShop} from "../../store/shop/action";
-import {getAllItem,getFavorite,getTopRate} from "../../store/item/action";
+import {getAllShop,getTopRate} from "../../store/shop/action";
+import {getFavorite} from "../../store/item/action";
 import Color from '../../constant/Color';
 const Home = ({navigation }) => {
-    const shopData=useSelector(state=>state.shops)
-    const items=useSelector(state=>state.items)
+    const shopData=useSelector(state=>state.shops);
+    const itemData=useSelector(state=>state.items);
+    const userData=useSelector(state=>state.users);
     const dispatch=useDispatch();
     useEffect(() => {
         dispatch(getAllShop());
-        dispatch(getAllItem());
-        dispatch(getFavorite());
+        if(userData.data!=null){
+            dispatch(getFavorite(userData.data.token));
+        }
         dispatch(getTopRate());
     }, [dispatch]);
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <View style={{ backgroundColor: Color.bgPrimary, flex: 1, borderBottomRightRadius: 50, }}>
-                    <View style={styles.box}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <EvilIcons name="location" size={24} color="white" style={{}} />
-                            <Text style={{ fontSize: 13, paddingTop: 2, color: 'white' }}>Delivery to</Text>
-                            <Text style={{ paddingHorizontal: 4, color: '#cc7a00', fontWeight: '700', paddingTop: 1 }}>Home</Text>
-                            <Ionicons name="notifications-outline" size={24} color="black" style={{ position: 'absolute', right: 10 }} />
-                        </View>
-                    </View>
-                    <View style={styles.box1}> 
-                        <NativeBaseProvider style={{ backgroundColor: 'red' }} onPress={Keyboard.dismiss}>
-                            <VStack space={2} width="100%">
-                                <VStack width="100%" space={2}  >
-                                    <Input borderRadius={10}
-                                        placeholder="Search"
-                                        variant="filled"
-                                        width='98%'
-                                        py={3}
-                                        px={1} 
-                                        InputLeftElement={<Icon size='sm' ml={2} size={5} color="gray.400" as={<Ionicons name="ios-search" />} />}
-                                        InputLeftElement={<Icon size='sm' ml={2} size={5} color="gray.400" as={<Ionicons name="ios-search" />} />}
-                                        autocomplete="off"
-                                        InputRightElement={
-                                        <Ionicons name="options" size={24} color="black"
-                                            onPress={() => navigation.navigate('Filter')}
-                                            style={{ paddingRight: 12 }} />}/>
-                                </VStack>
-                            </VStack> 
-                        </NativeBaseProvider>
-                    </View>
+                    
+                  
                     <View style={styles.box2}>
                         <TouchableOpacity><Ionicons name="ios-fast-food-outline" size={24} color="#e6e6e6" /></TouchableOpacity>
                         <TouchableOpacity><FontAwesome5 name="hamburger" size={24} color="#e6e6e6" /></TouchableOpacity>
@@ -67,10 +41,10 @@ const Home = ({navigation }) => {
                 <View style={styles.content1} borderTopLeftRadius={50}>
                     <View style={{ flex: 1, width: '100%', marginTop: 40 }}>
                         <ScrollView showsVerticalScrollIndicator={false}>
-                            <View style={{ flex: 9,marginBottom:10 }}>
+                            <View style={{ flex: 9,marginBottom:10 ,paddingHorizontal:13}}>
                                 <View style={styles.rootproduct}>
-                                    <Text style={{ fontSize: 16, fontWeight: '700' }} color={Color.bgPrimary} paddingLeft={2}>Shop</Text>
-                                    <AntDesign name="arrowright" style={styles.seemore} size={24} color={Color.textPrimary} />
+                                    <Text style={{ fontSize: 16, fontWeight: '700' }} color={Color.bgPrimary} paddingLeft={2}>Popular Restaurants</Text>
+                                    <Text style={styles.seemore}>More <AntDesign name="arrowright" style={styles.seemore} size={24} color={Color.textPrimary} /></Text>
                                 </View> 
                                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
                                     <View style={styles.rootcomponent}>
@@ -82,24 +56,24 @@ const Home = ({navigation }) => {
                                 <NativeBaseProvider>
                                     <Tabs align='center' colorScheme="warning" >
                                         <Tabs.Bar backgroundColor={Color.bgPrimary} >
-                                            <Tabs.Tab>All Menu</Tabs.Tab>
+                                            <Tabs.Tab>All Restaurants</Tabs.Tab>
                                             <Tabs.Tab>Favorite</Tabs.Tab>
                                             <Tabs.Tab>Top Rating</Tabs.Tab>
                                         </Tabs.Bar>
                                         <Tabs.Views>
                                             <Tabs.View> 
                                                 <View style={styles.Container}>
-                                                    <Product Pro_List={items.allItem} />
+                                                    <Product Pro_List={shopData.data} />
                                                 </View>
                                             </Tabs.View>
                                             <Tabs.View> 
                                                 <View style={styles.Container}>
-                                                    <Product Pro_List={items.favorite} />
+                                                    <Product Pro_List={itemData.favorite.data} />
                                                 </View>
                                             </Tabs.View>
                                             <Tabs.View> 
-                                                <View style={styles.Container}>
-                                                    <Product Pro_List={items.topRate} />
+                                                <View style={styles.Container,{flexWrap:"wrap",width:"50%"}}>
+                                                    <HomeproductBuy Pro_List={shopData.topRate} />
                                                 </View>
                                             </Tabs.View>
                                         </Tabs.Views>
@@ -118,8 +92,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     header: {
-        flex: 3,
-        backgroundColor: '#f2f2f2', 
+        flex: 1,
     },
     header1: {
         flex: 1,
@@ -160,7 +133,8 @@ const styles = StyleSheet.create({
     },
     rootcomponent: { 
         flexDirection: 'row',
-        paddingTop: 6
+        paddingTop: 6,
+        width:170
 
     },
     rootproduct: {

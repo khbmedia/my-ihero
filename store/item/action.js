@@ -1,12 +1,15 @@
+import * as api from "../../api/Index";
 export const ALL_ITEM='ITEM';
-export const TOP_RATE='TOP_RATE';
 export const FAVORITE='FAVORITE';
 export const getAllItem=(data)=>{
     return{type:ALL_ITEM,data:data}
 }
-export const getTopRate=(data)=>{
-    return{type:TOP_RATE,data:data}
-}
-export const getFavorite=(data)=>{
-    return{type:FAVORITE,data:data}
+export const getFavorite=(token)=>{
+    return dispatch=>{
+        api.Item.getWishlist(token).then(response=>{
+            if(response.data.success){
+                dispatch({type:FAVORITE,data:response.data.success});
+            }
+        })
+    }
 }

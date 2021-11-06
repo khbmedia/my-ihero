@@ -1,31 +1,36 @@
-
+import * as React from "react"
 import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
-import { Ionicons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import Star from "react-native-star-view/lib/Star";
+import Color from "../../constant/Color"
 const ProductList = props => {
     const navigation = useNavigation();
     const ProductDetailScreen = (ele) => {
-        navigation.navigate("ShopProfile"); 
+        navigation.navigate("ShopProfile",ele); 
     }
     return props.Pro_List?props.Pro_List.map
         (ele =>
             <TouchableOpacity style={props.Pro_List, styles.boxItem} key={ele.id} onPress={() => ProductDetailScreen(ele)} >
                 <View style={styles.menuBrand}>
                     <View style={styles.Pro_image}>
-                        <Image source={{ url: ele.product_image[0].path }} style={styles.imagestyle} />
+                        <Image source={{ url: ele.cover }} style={styles.imagestyle} />
                     </View>
                     <View style={styles.Pro_detail}>
                         <Text style={styles.nameBrand}>{ele.name}</Text>
 
-                        <Text style={{ color: 'gray', fontSize: 12 }}>
-                            <Ionicons name="md-fast-food-outline" size={15} color="orange" />
-                            burger / The United State
+                        <Text style={{ color: Color.textPrimary, fontSize: 12 }}>
+                            <Entypo name="location-pin" size={15} color={Color.textPrimary} />
+                            {ele.city}
                         </Text>
                         <View style={styles.aboutshop}>
-                            <Ionicons name="star" size={12} color="orange" />
-                            <Text style={{color:'#8c8c8c',fontSize:12}}>10mn</Text>
-                            <Text style={{color:'#8c8c8c',fontSize:12}}>contact</Text>
-
+                        <Star score={4} style={styles.starStyle} />
+                        <TouchableOpacity>
+                            <View style={{backgroundColor:Color.textPrimary,padding:5,borderRadius:4}}>
+                            <Text style={{color:"#ffffff",fontSize:12}}>Contact</Text>
+                            </View>
+                        </TouchableOpacity>
+                            
                         </View>
 
                     </View>
@@ -73,7 +78,7 @@ const styles = StyleSheet.create({
 
     },
     Pro_detail: {
-        flex: 3,
+        flex: 2,
         justifyContent: 'space-between',
         width: '100%',
         flexDirection: 'column',
@@ -83,18 +88,16 @@ const styles = StyleSheet.create({
     nameBrand: {
         fontSize: 16,
         fontWeight: 'bold',
-        padding:6
+        padding:6,
+        color:Color.bgPrimary
     },
     pro_price: {
         color: 'red',
         fontWeight: 'bold'
     },
     starStyle: {
-        width: 80,
+        width: 100,
         height: 20,
-        marginBottom: 20,
-        bottom: 1,
-        position: 'absolute'
     },
     aboutshop:{ 
         color: '#bfbfbf', 

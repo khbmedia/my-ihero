@@ -11,21 +11,7 @@ import Color from '../../constant/Color';
 import { AntDesign,Feather } from '@expo/vector-icons';
 const Search = ({ navigation }) => {
     React.useEffect(()=>{
-        navigation.setOptions({
-            headerRight:()=>(<View style={{ flexDirection: 'row',justifyContent:"center",alignItems:"center",paddingRight:12 }}>
-                        <TouchableOpacity onPress={()=>{
-                            navigation.navigate("Search");
-                        }}><Feather name="search" size={24} color={Color.textPrimary}/></TouchableOpacity>
-                        </View>),
-                    headerTintColor:Color.textPrimary,
-                    title:"Restaurants",
-                    headerStyle:{
-                        backgroundColor:Color.bgPrimary
-                        ,elevation:0,
-                        shadowOpacity:0,
-                        borderBottomWidth:0,
-                    }
-        })
+  
     },[]);
     return (
         <View style={styles.content}>

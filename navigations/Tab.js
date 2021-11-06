@@ -5,14 +5,14 @@ import Home from "../screens/Home/HomeStack";
 import Cart from "../screens/Order/OrderStack"; 
 import Search from "../screens/Home/Search";
 import Profile from "../screens/Profile/ProfileStack";
-import Shop from "../screens/Home/Shop";
-import { Ionicons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons'; 
+import Shop from "../screens/Shop/ShopStack";
+import {  MaterialCommunityIcons, FontAwesome5,Entypo,FontAwesome,Feather } from '@expo/vector-icons'; 
 import Color from "../constant/Color";
 const Tabs = () => {
     return (
-        <Tab.Navigator activeColor={Color.bgPrimary}
-            inactiveColor="#3e2465"
-            barStyle={{ backgroundColor: '#f2f2f2' }}> 
+        <Tab.Navigator activeColor="#f2f2f2"
+            inactiveColor={Color.textPrimary}
+            barStyle={{ backgroundColor: Color.bgPrimary }}> 
             <Tab.Screen 
             
                 name="Home"
@@ -20,7 +20,7 @@ const Tabs = () => {
                 options={{ 
                     tabBarLabel: 'Home',
                     tabBarIcon: ({ color }) => (
-                        <MaterialCommunityIcons name="home-circle-outline" size={27} color={Color.bgPrimary} />
+                        <Entypo name="home" size={24} color={Color.textPrimary} />
                     ), 
                     
                 }}
@@ -33,7 +33,7 @@ const Tabs = () => {
                       
                     tabBarLabel: 'Search',
                     tabBarIcon: ({ color }) => (
-                        <MaterialCommunityIcons name="apple-safari" size={27} color={Color.bgPrimary} />
+                        <FontAwesome name="search" size={23} color={Color.textPrimary}  />
                     ),
                     tabBarButton: (props) =>
                     (
@@ -47,7 +47,7 @@ const Tabs = () => {
                 options={{
                     tabBarLabel: 'Cart',
                     tabBarIcon: ({ color }) => (
-                        <Ionicons name="md-cart-outline" size={27} color={Color.bgPrimary} />
+                        <Feather name="shopping-cart" size={25} color={Color.textPrimary} />
                     ),
                 }}
             />
@@ -55,9 +55,9 @@ const Tabs = () => {
                 name="Shop"
                 component={Shop} 
                 options={{
-                    tabBarLabel: 'Shop',
+                    tabBarLabel: 'Restaurants',
                     tabBarIcon: ({ color }) => (
-                        <MaterialCommunityIcons name="shopping-outline" size={28} color={Color.bgPrimary} />
+                        <FontAwesome5 name="store" size={20} color={Color.textPrimary} />
                     ),
                 }}
             />
@@ -67,8 +67,7 @@ const Tabs = () => {
                 options={{
                     tabBarLabel: 'Profile',
                     tabBarIcon: ({ color }) => (
-                        // <EvilIcons name="user" size={40} color={Color.bgPrimary} />
-                        <FontAwesome5 name="user-circle" size={24} color={Color.bgPrimary} />
+                        <FontAwesome5 name="user-alt" size={22} color={Color.textPrimary} />
                     ),
                 }}
             /> 

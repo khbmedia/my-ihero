@@ -5,10 +5,13 @@ import ReduxThunk from "redux-thunk";
 import {Provider} from "react-redux";
 import ShopReducer from "./store/shop/reducer";
 import ItemReducer from "./store/item/reducer";
+import UserReducer from "./store/user/reducer";
+
 const App = () => {
     const rootReducer=combineReducers({
         shops:ShopReducer,
-        items:ItemReducer
+        items:ItemReducer,
+        users:UserReducer
     });
     const store=createStore(rootReducer,applyMiddleware(ReduxThunk));
     return (
