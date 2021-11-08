@@ -4,16 +4,15 @@ import { View, StyleSheet, Text, TouchableOpacity,Image } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import Color from "../../constant/Color";
-import { color } from "react-native-reanimated";
 const HomeproductBuy = props => { 
     const navigation = useNavigation();
-    const editColor = (ele) => {
+    const shopDetail = (ele) => {
           navigation.navigate("ShopProfile",ele );
     }
 
     return props.Pro_List.map
         (ele =>
-            <TouchableOpacity style={props.Pro_List, styles.boxItem} key={ele.id} onPress={() => editColor(ele)} >
+            <TouchableOpacity style={props.Pro_List, styles.boxItem} key={ele.id} onPress={() => shopDetail(ele)} >
                 <View style={styles.menuBrand}>
                     <View style={styles.Pro_image}>
                         <Image source={{url:ele.cover}} style={styles.imagestyle} />
