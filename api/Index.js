@@ -110,3 +110,9 @@ export const Address={
         return result;
     },
 }
+export const User={
+    checkLogin:async (credential)=>{
+        let result=await axios.post('login',credential);
+        return result;
+    }
+}

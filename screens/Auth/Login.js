@@ -1,8 +1,7 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'; ``
-import React, { useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState } from 'react';
 import { MaterialCommunityIcons, Feather, AntDesign } from '@expo/vector-icons';
-import logo from '../../assets/logo.png';
-import { LinearGradient } from 'expo-linear-gradient';
+import { useDispatch } from 'react-redux';
 import {
   NativeBaseProvider,
   Box,
@@ -20,6 +19,8 @@ import {
 import { View } from 'react-native';
 import { ImageBackground } from 'react-native';
 const HomeScreen = ({ navigation }) => { 
+  const[email,setEmail]=useState(null);
+  const[password,setPassword]=useState(null);
   return (
     <NativeBaseProvider>
       <ImageBackground source={{uri:'https://c.stocksy.com/a/QDR400/z9/1057932.jpg'}} style={{flex:1,}}>
@@ -29,7 +30,8 @@ const HomeScreen = ({ navigation }) => {
           Enter Your Phone number or Email address for Sign in ,Enjoy your food</Text>
         <VStack space={2} mt={5}>
           <FormControl>
-            <Input keyboardType="numeric" sborder=' 0.2px solid gray' placeholder='UserName'
+            <Input keyboardType="email-address" sborder=' 0.2px solid gray' placeholder='Email-Address'
+            onChangeText={text=>setEmail(text)}
               InputLeftElement={<Icon size='sm' ml={2} size={6} color="gray.400" as={<AntDesign name="user" size={29} color="black" />} />} 
               autocomplete="off"
               color='#fff'
@@ -40,6 +42,7 @@ const HomeScreen = ({ navigation }) => {
             <Input type="password" sborder=' 0.2px solid gray' placeholder='Password'
             color='#fff'
             height={50}
+            onChangeText={text=>setPassword(text)}
               InputLeftElement={<Icon size='sm' ml={2} size={6} color="gray.400" as={<Feather name="lock" size={29} color="black" />} />} 
               autocomplete="off" />
             <Pressable onPress={() => navigation.navigate('ForgotPassword')} >
