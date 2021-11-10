@@ -19,29 +19,24 @@ const Shops = ({ navigation }) => {
     return (
         <ShopStack.Navigator initialRouteName="Shop">
             <ShopStack.Screen name="Shop" component={Shop} options={{
-                    headerRight:()=>(<View style={{ flexDirection: 'row',justifyContent:"center",alignItems:"center",paddingRight:12 }}>
-                        <TouchableOpacity onPress={()=>{
-                            navigation.navigate("SearchShop");
-                        }}><Feather name="search" size={24} color={Color.textPrimary}/></TouchableOpacity>
-                        </View>),
-                    headerTintColor:Color.textPrimary,
-                    title:"Restaurants",
-                    headerStyle:{
-                        backgroundColor:Color.bgPrimary
-                        ,elevation:0,
-                        shadowOpacity:0,
-                        borderBottomWidth:0,
-                    } }} />
+                headerRight:()=>(<View style={{ flexDirection: 'row',justifyContent:"center",alignItems:"center",paddingRight:12 }}>
+                    <TouchableOpacity onPress={()=>{
+                        navigation.navigate("SearchShop");
+                    }}><Feather name="search" size={24} color={Color.textPrimary}/></TouchableOpacity>
+                    </View>),
+                headerTintColor:Color.textPrimary,
+                title:"Restaurants",
+                headerStyle:{
+                    backgroundColor:Color.bgPrimary
+                    ,elevation:0,
+                    shadowOpacity:0,
+                    borderBottomWidth:0,
+                } }} />
             <ShopStack.Screen name="SearchShop" component={SearchShop}
-
-                options={{header:()=>(<View style={{width:"100%",flex:1,flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
-                </View>), headerTintColor:Color.textPrimary,headerStyle:{
-                    backgroundColor:Color.bgPrimary,
-                
-                }}} />
-            
-        
-            
+            options={{header:()=>(<View style={{width:"100%",flex:1,flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
+            </View>), headerTintColor:Color.textPrimary,headerStyle:{
+                backgroundColor:Color.bgPrimary,
+            }}} />
         </ShopStack.Navigator>
     )
 }

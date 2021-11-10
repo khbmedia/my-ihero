@@ -45,8 +45,6 @@ export const Item={
         });
     return result;
     },
-    
-    
 }
 export const Notification={
     getNotificationByUserId:async (id)=>{
