@@ -15,6 +15,11 @@ export const Item={
         let result=await axios.get('/home-front-menu-category/'+shopId);
         return result;
     },
+    getMenuByCategoryId:async (shopId,categoryId)=>{
+        let result=await axios.get(`/home-front-resturant-menu-catecgories/${shopId}/${categoryId}`);
+        return result;
+        
+    },
     setWishlist:async (data,token)=>{
     let result=await axios.post('/wishlist',data,{
         headers: {
