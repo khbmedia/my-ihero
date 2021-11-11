@@ -3,9 +3,7 @@ import * as React from 'react';
 import { } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
-import {
-    NativeBaseProvider,
-    List
+import {NativeBaseProvider,List
 } from 'native-base';
 import Color from '../../constant/Color';
 import { AntDesign,Feather } from '@expo/vector-icons';
@@ -38,7 +36,6 @@ const Search = ({ navigation }) => {
                                 <List.Item style={styles.borderitem}>
                                     <Text style={styles.textCenter} >Payment History</Text>
                                     <AntDesign style={styles.rightIcon} name="close" />
-
                                 </List.Item>
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => navigation.navigate("UserProfile")}>
@@ -58,19 +55,12 @@ const Search = ({ navigation }) => {
                                 <List.Item >
                                     <Text style={styles.viewmore} >View more</Text>
                                     <AntDesign name="down" size={24} style={styles.viewmore} />
-
-
                                 </List.Item>
                             </TouchableOpacity>
-
-
                         </List>
                     </ScrollView>
                 </NativeBaseProvider>
-
-
             </ScrollView>
-
         </View>
     )
 }

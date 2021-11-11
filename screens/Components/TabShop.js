@@ -2,14 +2,14 @@ import * as React from "react";
 import { View, StyleSheet, Text, TouchableOpacity,ImageBackground } from 'react-native';
 const TabShop = props => { 
     return props.ShopList.map
-        (ele =>
-            <TouchableOpacity style={props.ShopList, styles.borderitem} key={ele.id}>
-                <ImageBackground source={{ uri: ele.logo_company }} borderRadius={2} style={{ height: 160, width: '100%' }}>
-                    <View style= {styles.boxtext}>
-                        <Text style={ styles.shopName}>{ele.name}</Text>
-                    </View>
-                </ImageBackground>
-            </TouchableOpacity>
+    (ele =>
+        <TouchableOpacity style={props.ShopList, styles.borderitem} key={ele.id}>
+            <ImageBackground source={{ uri: ele.logo_company }} borderRadius={2} style={{ height: 160, width: '100%' }}>
+                <View style= {styles.boxtext}>
+                    <Text style={ styles.shopName}>{ele.name}</Text>
+                </View>
+            </ImageBackground>
+        </TouchableOpacity>
     )
 }
 const styles = StyleSheet.create({

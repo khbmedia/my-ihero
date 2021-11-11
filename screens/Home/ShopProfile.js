@@ -14,12 +14,11 @@ import { ImageBackground } from 'react-native';
 const { width, height } = Dimensions.get("window");
 const ShopProfile = ({ route,navigation }) => {
     const {params}=route;
-    
     const [Data, setData] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
     useEffect(() => {
         navigation.setOptions({
-            title:params.name
+            name:params.name
         })
         setData(Datajson.data.success.data); 
     }, []);
