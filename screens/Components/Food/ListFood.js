@@ -29,7 +29,7 @@ const ProductList = props => {
             <TouchableOpacity style={props.DataFood, styles.boxItem} key={ele.id} onPress={() => ProductDetailScreen(ele)} >
                 <View style={styles.menuBrand}>
                     <View style={styles.Pro_image}>
-                        <Image source={{ url: ele.image}} style={styles.imagestyle} />
+                        <Image source={{ uri: ele.image}} style={styles.imagestyle} />
                     </View>
                     <View style={styles.Pro_detail}>
                         <Text style={styles.nameBrand}>{ele.name}</Text>

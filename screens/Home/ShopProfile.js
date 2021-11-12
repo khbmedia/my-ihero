@@ -11,37 +11,28 @@ import { Feather, AntDesign, Ionicons } from '@expo/vector-icons';
 import { ImageBackground } from 'react-native';
 import { getAllItem,getAllCategory } from '../../store/item/action';
 import { useDispatch,useSelector } from 'react-redux';
+import Color from '../../constant/Color';
 const { width, height } = Dimensions.get("window");
 const ShopProfile = ({ route,navigation }) => {
     const items=useSelector(state=>state.items);
     const {params}=route;
     const dispatch=useDispatch();
     useEffect(() => {
-        console.log(items.categories);
         navigation.setOptions({
-            title:params.name
+            title:params.name,
+            headerTitleAlign:"center",
+            headerRight:()=><Feather name="upload" size={24} color={Color.textPrimary}
+            style={{paddingRight:15}} onPress={() => bottomSheet.current.show()} />
         })
         dispatch(getAllItem(params.id));
         dispatch(getAllCategory(params.id));
     }, [dispatch]);
-    const [num, setNum] = useState(1);
     const bottomSheet = useRef();
     return (
         <View style={{ flex: 1, flexDirection: "column" }}>
             <ImageBackground source={{ uri: params.cover }}
                 style={{ width: '100%', flex: 1 }} borderBottomRightRadius={100} >
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: "flex-end" }}>
-                    <View style={{ flex: 4 }}>
-                        <AntDesign name="left" size={24} color="#ffffff"
-                            onPress={() => navigation.goBack()} />
-                    </View>
-                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                        <Feather name="search" size={24} color="white" />
-                        <Feather name="upload" size={24} color="white"
-                            onPress={() => bottomSheet.current.show()} />
-                    </View>
-                </View>
-                <View style={{ flex: 3 }}></View>
+              
             </ImageBackground>
             <View style={{ flex: 2, }}>
                 <ScrollView >
