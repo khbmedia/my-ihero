@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { SafeAreaView } from 'react-native';
-import { Feather, AntDesign, Ionicons } from '@expo/vector-icons';
-import { View, ScrollView, Keyboard, Text } from 'react-native';
-import Datajson from '../Components/Datajson';
-import TabBrand from '../Components/TabBrand'
-import {
-    NativeBaseProvider,
-    VStack,
-    Input,
-    Icon,
-    Tabs
-} from 'native-base';
+import { View, ScrollView, Text } from 'react-native';
+import TabBrand from '../Components/TabBrand';
+import {getAllShop} from "../../store/shop/action";
+import { useDispatch,useSelector } from 'react-redux';
 const Brand = ({ navigation }) => {
-    const [Data, setData] = useState([]);
+    const shopData=useSelector(state=>state.shops);
+    const dispatch=useDispatch();
     useEffect(() => {
-        setData(Datajson.data.success.data);
+        dispatch(getAllShop());
 
-    }, []);
+    }, [dispatch]);
     return (
         <View style={{ flex: 1, width: '100%' }}>
            
@@ -25,7 +19,7 @@ const Brand = ({ navigation }) => {
                 <Text style={{fontSize:16, paddingLeft:20 ,fontWeight:'600'}}>Near By Restourents</Text>
                 <Text style={{fontSize:12, color:'gray', paddingLeft:20}}>200+ Restourents found near you</Text>
                     <SafeAreaView>
-                        <TabBrand BrandList={Data} />
+                        <TabBrand BrandList={shopData.data} />
                     </SafeAreaView>
                 </ScrollView>
             </View>

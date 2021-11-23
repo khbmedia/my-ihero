@@ -6,130 +6,48 @@ import { View, Text, Image, ScrollView, Dimensions, StyleSheet, Button, IconButt
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BottomSheet from 'react-native-gesture-bottom-sheet';
 import Star from 'react-native-star-view';  
-import Modal from "react-native-modalbox";
-import Datajson from '../Components/Datajson';
 import ListFood from '../Components/Food/ListFood';
 import { Feather, AntDesign, Ionicons } from '@expo/vector-icons';
 import { ImageBackground } from 'react-native';
+import { getAllItem,getAllCategory } from '../../store/item/action';
+import { useDispatch,useSelector } from 'react-redux';
+import Color from '../../constant/Color';
 const { width, height } = Dimensions.get("window");
 const ShopProfile = ({ route,navigation }) => {
+    const items=useSelector(state=>state.items);
     const {params}=route;
-    
-    const [Data, setData] = useState([]);
-    const [modalVisible, setModalVisible] = useState(false);
+    const dispatch=useDispatch();
     useEffect(() => {
         navigation.setOptions({
-            title:params.name
+            title:params.name,
+            headerTitleAlign:"center",
+            headerRight:()=><Feather name="upload" size={24} color={Color.textPrimary}
+            style={{paddingRight:15}} onPress={() => bottomSheet.current.show()} />
         })
-        setData(Datajson.data.success.data); 
-    }, []);
-    const [num, setNum] = useState(1);
+        dispatch(getAllItem(params.id));
+        dispatch(getAllCategory(params.id));
+    }, [dispatch]);
     const bottomSheet = useRef();
     return (
         <View style={{ flex: 1, flexDirection: "column" }}>
-            <ImageBackground source={{ uri: 'https://marketingtochina.com/wp-content/uploads/2019/11/buritos-cover.jpg' }}
+            <ImageBackground source={{ uri: params.cover }}
                 style={{ width: '100%', flex: 1 }} borderBottomRightRadius={100} >
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: "flex-end" }}>
-                    <View style={{ flex: 4 }}>
-                        <AntDesign name="left" size={24} color="#ffffff"
-                            onPress={() => navigation.goBack()} />
-                    </View>
-                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                        <Feather name="search" size={24} color="white" />
-                        <Feather name="upload" size={24} color="white"
-                            onPress={() => bottomSheet.current.show()} />
-                    </View>
-                </View>
-                <View style={{ flex: 3 }}></View>
+              
             </ImageBackground>
             <View style={{ flex: 2, }}>
                 <ScrollView >
                     <View style={{ flex: 1, padding: 6, paddingHorizontal: 18 }}>
-                        <Text style={styles.shopname}> Mcdonald'S</Text>
-                        <Text style={styles.shopabout}> $$ . American food . burger</Text>
+                        <Text style={styles.shopname}> {params.name}</Text>
+                        <Text style={styles.shopabout}> {params.city}</Text>
                         <Star score={4} style={styles.starStyle} />
                     </View>
                     <View style={{ flex: 5 }}> 
-                        <NativeBaseProvider>
-                            <Tabs align='start' scrollEnabled={true} colorScheme="warning"  >
-                                    <Tabs.Bar  >
-                                        <Tabs.Tab>Recent</Tabs.Tab>
-                                        <Tabs.Tab>Burger</Tabs.Tab>
-                                        <Tabs.Tab>Fast Food</Tabs.Tab>
-                                        <Tabs.Tab>Recent</Tabs.Tab>
-                                        <Tabs.Tab>Burger</Tabs.Tab>
-                                        <Tabs.Tab>Fast Food</Tabs.Tab>
-                                        <Tabs.Tab>Fast Food</Tabs.Tab>
-                                        <Tabs.Tab>Fast Food</Tabs.Tab>
-                                        <Tabs.Tab>Fast Food</Tabs.Tab>
-                                    </Tabs.Bar> 
-                                <Tabs.Views>
-                                    <Tabs.View>
-                                        <ScrollView showsVerticalScrollIndicator={false}>
-                                            <View style={styles.Container}>
-                                                <ListFood DataFood={Data} />
-                                            </View>
-                                        </ScrollView>
-                                    </Tabs.View>
-                                    <Tabs.View>
-                                        <ScrollView showsVerticalScrollIndicator={false}>
-                                            <View style={styles.Container}>
-                                                <ListFood DataFood={Data} />
-                                            </View>
-                                        </ScrollView>
-                                    </Tabs.View>
-                                    <Tabs.View>
-                                        <ScrollView showsVerticalScrollIndicator={false}>
-                                            <View style={styles.Container}>
-                                                <ListFood DataFood={Data} />
-                                            </View>
-                                        </ScrollView>
-                                    </Tabs.View>
-                                    <Tabs.View>
-                                        <ScrollView showsVerticalScrollIndicator={false}>
-                                            <View style={styles.Container}>
-                                                <ListFood DataFood={Data} />
-                                            </View>
-                                        </ScrollView>
-                                    </Tabs.View>
-                                    <Tabs.View>
-                                        <ScrollView showsVerticalScrollIndicator={false}>
-                                            <View style={styles.Container}>
-                                                <ListFood DataFood={Data} />
-                                            </View>
-                                        </ScrollView>
-                                    </Tabs.View>
-                                    <Tabs.View>
-                                        <ScrollView showsVerticalScrollIndicator={false}>
-                                            <View style={styles.Container}>
-                                                <ListFood DataFood={Data} />
-                                            </View>
-                                        </ScrollView>
-                                    </Tabs.View>
-                                    <Tabs.View>
-                                        <ScrollView showsVerticalScrollIndicator={false}>
-                                            <View style={styles.Container}>
-                                                <ListFood DataFood={Data} />
-                                            </View>
-                                        </ScrollView>
-                                    </Tabs.View>
-                                    <Tabs.View>
-                                        <ScrollView showsVerticalScrollIndicator={false}>
-                                            <View style={styles.Container}>
-                                                <ListFood DataFood={Data} />
-                                            </View>
-                                        </ScrollView>
-                                    </Tabs.View>
-                                    <Tabs.View>
-                                        <ScrollView showsVerticalScrollIndicator={false}>
-                                            <View style={styles.Container}>
-                                                <ListFood DataFood={Data} />
-                                            </View>
-                                        </ScrollView>
-                                    </Tabs.View>
-                                </Tabs.Views>
-                            </Tabs>
-                        </NativeBaseProvider>
+                    <ScrollView showsVerticalScrollIndicator={false}>
+                        <View style={styles.Container}>
+                            <ListFood DataFood={items.allItem} />
+                        </View>
+                    </ScrollView>
+                        
                     </View>
                 </ScrollView>
             </View>

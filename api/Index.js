@@ -15,6 +15,11 @@ export const Item = {
         let result = await axios.get('/home-front-menu-category/' + shopId);
         return result;
     },
+    getMenuByCategoryId: async (shopId, categoryId) => {
+        let result = await axios.get(`/home-front-resturant-menu-catecgories/${shopId}/${categoryId}`);
+        return result;
+
+    },
     setWishlist: async (data, token) => {
         let result = await axios.post('/wishlist', data, {
             headers: {
@@ -93,19 +98,25 @@ export const Shop = {
 }
 export const Address = {
     getProvinc: async () => {
-        let result = await axios.get('get-provinces');
+        let result = await axios.get('/get-provinces');
         return result;
     },
     getDistrict: async () => {
-        let result = await axios.get('get-district');
+        let result = await axios.get('/get-district');
         return result;
     },
     getCommunes: async () => {
-        let result = await axios.get('get-communes');
+        let result = await axios.get('/get-communes');
         return result;
     },
     getVillages: async () => {
-        let result = await axios.get('get-villages');
+        let result = await axios.get('/get-villages');
         return result;
     },
+}
+export const User = {
+    checkLogin: async (credential) => {
+        let result = await axios.post('/login', credential);
+        return result;
+    }
 }

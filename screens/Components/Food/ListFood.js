@@ -1,17 +1,15 @@
 
-import React, { useState, useEffect, useRef } from 'react'
-import { Entypo } from '@expo/vector-icons';
+import React, { useState, useRef } from 'react';
 import Star from 'react-native-star-view';
 import BottomSheet from 'react-native-gesture-bottom-sheet';
 import { View, StyleSheet, Text, TouchableOpacity, Image,ImageBackground } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
-import { Feather, AntDesign, Ionicons } from '@expo/vector-icons';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 const ProductList = props => {
     const navigation = useNavigation();
     const ProductDetailScreen = (ele) => {
         navigation.navigate("ShopProfile");
-        console.log('IN');
     }
     const[Value,setVAlue]=useState(1);
     const[Price,setPrice]=useState(15);
@@ -31,15 +29,15 @@ const ProductList = props => {
             <TouchableOpacity style={props.DataFood, styles.boxItem} key={ele.id} onPress={() => ProductDetailScreen(ele)} >
                 <View style={styles.menuBrand}>
                     <View style={styles.Pro_image}>
-                        <Image source={{ url: ele.product_image[0].path }} style={styles.imagestyle} />
+                        <Image source={{ uri: ele.image}} style={styles.imagestyle} />
                     </View>
                     <View style={styles.Pro_detail}>
                         <Text style={styles.nameBrand}>{ele.name}</Text>
 
-                        <Text style={{ color: 'gray', fontSize: 12 }}>The senfwich is make for furture that salat hy potato
+                        <Text style={{ color: 'gray', fontSize: 12 }}>{ele.name}
                         </Text>
                         <View style={styles.aboutshop}>
-                        <Text style={styles.pro_price}>$ {ele.product_variation[0].product_variation_condition[0].price_in_unit}</Text>
+                        <Text style={styles.pro_price}>$ {ele.price}</Text>
                         <TouchableOpacity  onPress={() => bottomSheet.current.show()}>
                         <Ionicons name="add-circle-sharp" size={34} color="#ff9900"   />
                         </TouchableOpacity>

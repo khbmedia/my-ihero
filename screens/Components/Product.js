@@ -14,7 +14,7 @@ const ProductList = props => {
             <TouchableOpacity style={props.Pro_List, styles.boxItem} key={ele.id} onPress={() => ProductDetailScreen(ele)} >
                 <View style={styles.menuBrand}>
                     <View style={styles.Pro_image}>
-                        <Image source={{ url: ele.cover }} style={styles.imagestyle} />
+                        <Image source={{ uri: ele.cover }} style={styles.imagestyle} />
                     </View>
                     <View style={styles.Pro_detail}>
                         <Text style={styles.nameBrand}>{ele.name}</Text>
