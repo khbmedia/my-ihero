@@ -35,14 +35,13 @@ const Dashboard = ({ route, navigation }) => {
                 <View style={{ flex: 1, backgroundColor: '#e6e6e6', width: '100%', borderTopLeftRadius: 300, alignItems: 'center' }}>
                     <View style={{ backgroundColor: '#fff', width: '90%', height: '17%', borderRadius: 20, top: -30, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', padding: 10 }}>
                         <View style={{ flex: 1, height: '90%', alignItems: 'center', flexDirection: 'column' }}>
-                            {/* <MaterialCommunityIcons name="airplane-takeoff" size={28} color="#26734d" /> */}
+                         
                             <Image source={{ uri: 'https://image.flaticon.com/icons/png/512/619/619043.png' }}
                                 style={styles.titleCart} />
                             <Text style={{ color: '#4d4d4d' }}>Delivery</Text>
                         </View>
 
-                        <View style={{ flex: 1, height: '90%', alignItems: 'center', flexDirection: 'column' }}>
-                            {/* <FontAwesome5 name="shopping-cart" size={28} color="#ff8566" />÷ */}
+                        <View style={{ flex: 1, height: '90%', alignItems: 'center', flexDirection: 'column' }}> 
                             <Image source={{ uri: 'https://image.flaticon.com/icons/png/512/3566/3566511.png' }}
                                 style={styles.titleCart} />
                             <Text style={{ color: '#4d4d4d' }}>Cart</Text>

@@ -1,24 +1,53 @@
-import * as React from 'react';
-import { FontAwesome, AntDesign  } from '@expo/vector-icons';  
-import { TouchableOpacity } from 'react-native';
-import { ImageBackground,View } from 'react-native'; 
+import * as React from 'react';   
 import { createStackNavigator } from '@react-navigation/stack';
 import Cart from "./Cart";
 import Card from './Card';
 import Checkout from "./Checkout";
 import Confirmation from "./Confirmation";
 import Payment from './Payment';
-import logo from '../../assets/logo.png';
+import { View } from 'react-native';
+import Color from '../../constant/Color';
+import { FontAwesome } from '@expo/vector-icons';
 const OrderStack = createStackNavigator();
 const Orders = () => {
         return(
         <OrderStack.Navigator >
             <OrderStack.Screen name="Cart" component={Cart} 
-              options={{ header: () => null }} />
+                options={{
+                    headerTintColor: Color.textPrimary,
+                    headerTitle: 'Cart',
+                  headerTitleAlign: 'center',
+                  headerStyle:{
+                      backgroundColor:Color.bgPrimary 
+                    },
+                    headerRight: (props) => (
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                            <FontAwesome name="search" size={25} color={Color.textPrimary} style={{ paddingRight: 20 }} />
+                        </View>
+                    )
+                }} />
             <OrderStack.Screen name="Payment" component={Payment} 
-              options={{ header: () => null }} />
+                options={{
+                    headerTintColor: Color.textPrimary,
+                    headerTitle: 'Setting',
+                    headerTitleAlign: 'center',
+                    headerRight: (props) => (
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                            <FontAwesome name="search" size={25} color="#ffffff" style={{ paddingRight: 20 }} />
+                        </View>
+                    )
+                }} />
             <OrderStack.Screen name="Card" component={Card} 
-              options={{ header: () => null }} />
+                options={{
+                    headerTintColor: Color.textPrimary,
+                    headerTitle: 'Setting',
+                    headerTitleAlign: 'center',
+                    headerRight: (props) => (
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                            <FontAwesome name="search" size={25} color="#ffffff" style={{ paddingRight: 20 }} />
+                        </View>
+                    )
+                }} />
             <OrderStack.Screen name="Checkout" component={Checkout} options={{
                 title:'Checkout'
             }} />

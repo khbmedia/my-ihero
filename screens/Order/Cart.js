@@ -87,7 +87,7 @@ const ScreenCart = ({ route, navigation }) => {
                             <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'
                             ,paddingHorizontal:15, paddingVertical:10,height:70}}>
                                 <TouchableOpacity
-                                 style={{flex:1,backgroundColor:'#0A8791',borderRadius:20,alignItems:'center',justifyContent:'center'}}
+                                 style={{flex:1,backgroundColor:'#0A8791',borderRadius:5,alignItems:'center',justifyContent:'center'}}
                                 onPress={()=>navigation.navigate('Payment')}
                                  >
                                     <Text style={{color:'white',fontSize:20,fontWeight:'500'}}>CheckOut</Text>
