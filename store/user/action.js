@@ -10,7 +10,12 @@ export const setCredential = (data) => {
 export const setError = (data) => {
     return { type: SET_ERROR, data: data };
 }
-
+export const logout=()=>{
+    return dispatch=>{
+        dispatch(setCredential(null));
+        AsyncStorage.clear();
+    }
+}
 export const checkLogin = (credential) => {
     return dispatch => {
         api.User.checkLogin(credential).then(response => {

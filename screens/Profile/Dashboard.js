@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, ScrollView, Image, View, Text, TouchableOpacity } from 'react-native';
-import { List, NativeBaseProvider, Switch, Button, } from "native-base";
-import { Ionicons, AntDesign, MaterialCommunityIcons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
-import CartDetail from '../Components/CartDetail';
-import { ImageBackground } from 'react-native';
+import { List, NativeBaseProvider, Switch } from "native-base";
+import {  AntDesign, FontAwesome5 } from '@expo/vector-icons';
 import Color from '../../constant/Color';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/user/action';
 const Dashboard = ({ route, navigation }) => {
+    const dispatch=useDispatch();
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -85,7 +86,7 @@ const Dashboard = ({ route, navigation }) => {
                                             <Switch size="sm" style={styles.rightIcon} />
                                         </List.Item>
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                                    <TouchableOpacity onPress={() => dispatch(logout())}>
                                         <List.Item style={styles.borderitem}>
                                             <FontAwesome5 style={styles.leftIcon} name="history" />
                                             <Text style={styles.textLogout}>Log Out </Text>
