@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllShop, getTopRate } from "../../store/shop/action";
 import { getFavorite } from "../../store/item/action";
 import Color from '../../constant/Color';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const Home = ({ navigation }) => {
     const shopData = useSelector(state => state.shops);
     const itemData = useSelector(state => state.items);

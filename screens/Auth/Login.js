@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
 import { MaterialCommunityIcons, Feather, AntDesign } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
+import { checkLogin } from '../../store/user/action';
 import {
   NativeBaseProvider,
   Box,
@@ -13,17 +14,16 @@ import {
   Icon,
   IconButton,
   HStack,
-  Image,
   Pressable
 } from 'native-base';
-import { View } from 'react-native';
 import { ImageBackground } from 'react-native';
 const HomeScreen = ({ navigation }) => { 
+  const dispatch=useDispatch();
   const[email,setEmail]=useState(null);
   const[password,setPassword]=useState(null);
   return (
     <NativeBaseProvider>
-      <ImageBackground source={{uri:'https://c.stocksy.com/a/QDR400/z9/1057932.jpg'}} style={{flex:1,}}>
+      <ImageBackground source={require('../Assets/Background/Authentication.jpg')} style={{flex:1,}}>
         <Box flex={1} pt={10} w="90%" mx='auto' justifyContent="center">
         <Text style={{ color: '#fff', fontSize: 30, fontWeight: 'bold', paddingVertical: 10 }}>Welcome to</Text>
         <Text style={{ fontSize: 14, color: "#e6e6e6", paddingBottom: 20 }}>
@@ -53,7 +53,13 @@ const HomeScreen = ({ navigation }) => {
 
           </FormControl>
           <VStack space={2}>
-            <Button colorScheme="teal" _text={{ color: 'white' }}onPress={() => navigation.navigate('Profile')}>
+            <Button colorScheme="teal" _text={{ color: 'white' }}onPress={() => {
+              let fd=new FormData();
+              fd.append("email",email);
+              fd.append("password",password);
+              fd.append("device","phone");
+              dispatch(checkLogin(fd));
+            }}>
               Log in
             </Button>
 
