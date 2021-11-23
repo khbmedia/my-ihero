@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, ScrollView, Image, View, Text, TouchableOpacity } from 'react-native';
-import { List, NativeBaseProvider, Switch, Button, } from "native-base";
-import { Ionicons, AntDesign, MaterialCommunityIcons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
-import CartDetail from '../Components/CartDetail';
-import { ImageBackground } from 'react-native';
+import { List, NativeBaseProvider, Switch, } from "native-base";
+import { AntDesign, FontAwesome5, } from '@expo/vector-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllShop, getTopRate } from "../../store/shop/action";
 import Color from '../../constant/Color';
 const Dashboard = ({ route, navigation }) => {
+    const userData = useSelector(state => state.users.userData.user);
+    const dispatch = useDispatch();
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <View style={{ flex: 2, flexDirection: 'row', alignItems: 'flex-start' }}>
                     <View style={{ flex: 1, width: '100%', height: '100%', padding: 10, paddingLeft: 30 }}>
-                        <Image source={{ uri: "https://imagesvc.meredithcorp.io/v3/mm/image?q=85&c=sc&poi=face&w=2000&h=1333&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F20%2F2017%2F07%2Fjustin-bieber2-1.jpg" }}
+                        <Image source={{ uri: userData.profile }}
                             style={styles.userImg}></Image>
                     </View>
                     <View style={styles.header_Detail}>
-                        <Text style={styles.username}>Dunh vidou</Text>
-                        <Text style={styles.useremail}>vidou.dunh@khbmedia.asia</Text>
+                        <Text style={styles.username}>{userData.name}</Text>
+                        <Text style={styles.useremail}>{userData.email}</Text>
+                        <Text style={styles.useremail}>{userData.address}</Text>
                     </View>
                 </View>
             </View>
