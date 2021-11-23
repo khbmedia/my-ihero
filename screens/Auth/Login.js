@@ -36,10 +36,12 @@ const HomeScreen = ({ navigation }) => {
               autocomplete="off"
               color='#fff'
               height={50}
+              autoCapitalize='none'
             />
           </FormControl>
           <FormControl mb={5}>
             <Input type="password" sborder=' 0.2px solid gray' placeholder='Password'
+            autoCapitalize='none'
             color='#fff'
             height={50}
             onChangeText={text=>setPassword(text)}

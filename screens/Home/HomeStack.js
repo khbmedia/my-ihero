@@ -15,10 +15,12 @@ const width = Dimensions.get("window").width;
 import Color from '../../constant/Color';
 import Notification from './Notification'
 import Search from './Search'
+import StartUp from './StartUp';
 const HomeStack = createStackNavigator();
 const Homes = ({ navigation }) => {
     return (
         <HomeStack.Navigator>
+            <HomeStack.Screen name="StartUp" component={StartUp} />
             <HomeStack.Screen
                 name="Home"
                 component={Home}

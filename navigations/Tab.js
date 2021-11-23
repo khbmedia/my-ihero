@@ -10,7 +10,7 @@ import { FontAwesome5, Entypo, FontAwesome, Feather } from '@expo/vector-icons';
 import { useSelector } from "react-redux";
 import Color from "../constant/Color";
 const Tabs = () => {
-    const userData = useSelector(state => state.users.userData)
+    const userData = useSelector(state => state.users.userData);
     return (
         <Tab.Navigator activeColor="#f2f2f2"
             inactiveColor={Color.textPrimary}
