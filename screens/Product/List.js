@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
-import axios from 'axios';
-import TabShop from '../Components/TabShop';
 import Product from '../Components/Product';
 import Star from 'react-native-star-view';
 import Datajson from '../Components/Datajson';
-import { Entypo } from '@expo/vector-icons';
-import pro1 from '../Assets/Images/Brand/image1.png';
 import { Tabs, NativeBaseProvider } from 'native-base';
-import { style } from 'styled-system';
 const ListByShop = ({ navigation }) => {
     const [Data, setList] = useState([]);
     const funGetDataShop = async () => {

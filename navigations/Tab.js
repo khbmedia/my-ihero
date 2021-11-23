@@ -6,9 +6,12 @@ import Cart from "../screens/Order/OrderStack";
 import Search from "../screens/search/SearchStack";
 import Profile from "../screens/Profile/ProfileStack";
 import Shop from "../screens/Shop/ShopStack";
+import AuthStacks from "../screens/Auth/AuthStack";
 import {  FontAwesome5,Entypo,FontAwesome,Feather } from '@expo/vector-icons'; 
+import { useSelector } from "react-redux";
 import Color from "../constant/Color";
 const Tabs = () => {
+    const userData=useSelector(state=>state.users.userData)
     return (
         <Tab.Navigator activeColor="#f2f2f2"
             inactiveColor={Color.textPrimary}
@@ -60,7 +63,7 @@ const Tabs = () => {
                     ),
                 }}
             />
-            <Tab.Screen
+            {userData!=null?(<Tab.Screen
                 name="Profile"
                 component={Profile}
                 options={{
@@ -69,7 +72,17 @@ const Tabs = () => {
                         <FontAwesome5 name="user-alt" size={22} color={Color.textPrimary} />
                     ),
                 }}
-            /> 
+            /> ):(<Tab.Screen
+                name="Login"
+                component={AuthStacks}
+                options={{
+                    tabBarLabel: 'Login',
+                    tabBarIcon: ({ color }) => (
+                        <FontAwesome5 name="user-alt" size={22} color={Color.textPrimary} />
+                    ),
+                }}
+            /> )}
+            
         </Tab.Navigator>
     );
 }

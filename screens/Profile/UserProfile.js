@@ -4,7 +4,6 @@ import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, Pressable 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Star from 'react-native-star-view';
 import { Entypo } from '@expo/vector-icons';
-import pro1 from '../Assets/Images/Brand/image1.png';
 import { Tabs, NativeBaseProvider, Center, List } from 'native-base';
 import { EvilIcons, Ionicons, FontAwesome5, FontAwesome } from '@expo/vector-icons';
 const UserProfile = ({ navigation }) => {
@@ -45,7 +44,7 @@ const UserProfile = ({ navigation }) => {
                                         <TouchableOpacity style={styles.boxItem} onPress={() => navigation.navigate("ProducDetail")}>
                                             <View style={styles.menuBrand}>
                                                 <View style={styles.Pro_image}>
-                                                    <Image source={pro1} style={styles.imagestyle} />
+                                                    {/* <Image source={pro1} style={styles.imagestyle} /> */}
                                                 </View>
                                                 <View style={styles.Pro_detail}>
                                                     <Text style={styles.nameBrand}>Shoes</Text>
@@ -58,7 +57,7 @@ const UserProfile = ({ navigation }) => {
                                         <TouchableOpacity style={styles.boxItem} onPress={() => navigation.navigate("ProducDetail")}>
                                             <View style={styles.menuBrand}>
                                                 <View style={styles.Pro_image}>
-                                                    <Image source={pro1} style={styles.imagestyle} />
+                                                    {/* <Image source={pro1} style={styles.imagestyle} /> */}
                                                 </View>
                                                 <View style={styles.Pro_detail}>
                                                     <Text style={styles.nameBrand}>Shoes</Text>
@@ -71,7 +70,7 @@ const UserProfile = ({ navigation }) => {
                                         <TouchableOpacity style={styles.boxItem} onPress={() => navigation.navigate("ProducDetail")}>
                                             <View style={styles.menuBrand}>
                                                 <View style={styles.Pro_image}>
-                                                    <Image source={pro1} style={styles.imagestyle} />
+                                                    {/* <Image source={pro1} style={styles.imagestyle} /> */}
                                                 </View>
                                                 <View style={styles.Pro_detail}>
                                                     <Text style={styles.nameBrand}>Shoes</Text>
@@ -84,7 +83,7 @@ const UserProfile = ({ navigation }) => {
                                         <TouchableOpacity style={styles.boxItem} onPress={() => navigation.navigate("ProducDetail")}>
                                             <View style={styles.menuBrand}>
                                                 <View style={styles.Pro_image}>
-                                                    <Image source={pro1} style={styles.imagestyle} />
+                                                    {/* <Image source={pro1} style={styles.imagestyle} /> */}
                                                 </View>
                                                 <View style={styles.Pro_detail}>
                                                     <Text style={styles.nameBrand}>Shoes</Text>
@@ -101,7 +100,7 @@ const UserProfile = ({ navigation }) => {
                                         <TouchableOpacity style={styles.boxItem} onPress={() => navigation.navigate("ProducDetail")}>
                                             <View style={styles.menuBrand}>
                                                 <View style={styles.Pro_image}>
-                                                    <Image source={pro1} style={styles.imagestyle} />
+                                                    {/* <Image source={pro1} style={styles.imagestyle} /> */}
                                                 </View>
                                                 <View style={styles.Pro_detail}>
                                                     <Text style={styles.nameBrand}>Shoes</Text>
@@ -114,7 +113,7 @@ const UserProfile = ({ navigation }) => {
                                         <TouchableOpacity style={styles.boxItem} onPress={() => navigation.navigate("ProducDetail")}>
                                             <View style={styles.menuBrand}>
                                                 <View style={styles.Pro_image}>
-                                                    <Image source={pro1} style={styles.imagestyle} />
+                                                    {/* <Image source={pro1} style={styles.imagestyle} /> */}
                                                 </View>
                                                 <View style={styles.Pro_detail}>
                                                     <Text style={styles.nameBrand}>Shoes</Text>
@@ -127,7 +126,7 @@ const UserProfile = ({ navigation }) => {
                                         <TouchableOpacity style={styles.boxItem} onPress={() => navigation.navigate("ProducDetail")}>
                                             <View style={styles.menuBrand}>
                                                 <View style={styles.Pro_image}>
-                                                    <Image source={pro1} style={styles.imagestyle} />
+                                                    {/* <Image source={pro1} style={styles.imagestyle} /> */}
                                                 </View>
                                                 <View style={styles.Pro_detail}>
                                                     <Text style={styles.nameBrand}>Shoes</Text>
@@ -140,7 +139,7 @@ const UserProfile = ({ navigation }) => {
                                         <TouchableOpacity style={styles.boxItem} onPress={() => navigation.navigate("ProducDetail")}>
                                             <View style={styles.menuBrand}>
                                                 <View style={styles.Pro_image}>
-                                                    <Image source={pro1} style={styles.imagestyle} />
+                                                    {/* <Image source={pro1} style={styles.imagestyle} /> */}
                                                 </View>
                                                 <View style={styles.Pro_detail}>
                                                     <Text style={styles.nameBrand}>Shoes</Text>
@@ -153,7 +152,7 @@ const UserProfile = ({ navigation }) => {
                                         <TouchableOpacity style={styles.boxItem} onPress={() => navigation.navigate("ProducDetail")}>
                                             <View style={styles.menuBrand}>
                                                 <View style={styles.Pro_image}>
-                                                    <Image source={pro1} style={styles.imagestyle} />
+                                                    {/* <Image source={pro1} style={styles.imagestyle} /> */}
                                                 </View>
                                                 <View style={styles.Pro_detail}>
                                                     <Text style={styles.nameBrand}>Shoes</Text>
@@ -166,7 +165,7 @@ const UserProfile = ({ navigation }) => {
                                         <TouchableOpacity style={styles.boxItem} onPress={() => navigation.navigate("ProducDetail")}>
                                             <View style={styles.menuBrand}>
                                                 <View style={styles.Pro_image}>
-                                                    <Image source={pro1} style={styles.imagestyle} />
+                                                    {/* <Image source={pro1} style={styles.imagestyle} /> */}
                                                 </View>
                                                 <View style={styles.Pro_detail}>
                                                     <Text style={styles.nameBrand}>Shoes</Text>

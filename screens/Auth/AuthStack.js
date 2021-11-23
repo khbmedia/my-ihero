@@ -8,7 +8,7 @@ import ResetPassword from "./ResetPassword"
 import VerifyAccount from "./VerifyAccount" 
 import Profile from '../Profile/Dashboard';
 const AuthStack = createStackNavigator();
-const Auth= () => {
+const AuthStacks= () => {
     return (
         <AuthStack.Navigator headerMode='none'>
             <AuthStack.Screen name="Login" component={Login}  options={{header:() =>null}} />
@@ -21,4 +21,4 @@ const Auth= () => {
     )
     
 }
-export default Auth;
+export default AuthStacks;

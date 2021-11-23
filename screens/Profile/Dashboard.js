@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, ScrollView, Image, View, Text, TouchableOpacity } from 'react-native';
-import { List, NativeBaseProvider, Switch, Button, } from "native-base";
-import { Ionicons, AntDesign, MaterialCommunityIcons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
-import CartDetail from '../Components/CartDetail';
-import { ImageBackground } from 'react-native';
+import { List, NativeBaseProvider, Switch, } from "native-base";
+import { Ionicons, AntDesign,  FontAwesome5 } from '@expo/vector-icons';
+import Color from '../../constant/Color';
 const Dashboard = ({ route, navigation }) => {
     return (
         <View style={styles.container}>
@@ -31,7 +30,7 @@ const Dashboard = ({ route, navigation }) => {
                     </View>
                 </View>
             </View>
-            <View style={{ flex: 7, backgroundColor: '#0A8791', alignItems: 'center' }}>
+            <View style={{ flex: 7, backgroundColor: Color.bgPrimary, alignItems: 'center' }}>
                 <View style={{ flex: 1, backgroundColor: '#e6e6e6', width: '100%', borderTopLeftRadius: 300, alignItems: 'center' }}>
                     <View style={{ backgroundColor: '#fff', width: '90%', height: '17%', borderRadius: 20, top: -30, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', padding: 10 }}>
                         <View style={{ flex: 1, height: '90%', alignItems: 'center', flexDirection: 'column' }}>
@@ -124,7 +123,7 @@ const styles = StyleSheet.create({
     },
     header: {
         flex: 3,
-        backgroundColor: '#0A8791',
+        backgroundColor: Color.bgPrimary,
         borderBottomRightRadius: 400,
     },
     header_Content: {
@@ -134,7 +133,7 @@ const styles = StyleSheet.create({
     },
     header_back: {
         flex: 3,
-        backgroundColor: '#0A8791',
+        backgroundColor: Color.bgPrimary,
         borderBottomRightRadius: 400,
         paddingLeft:10
 
@@ -186,7 +185,7 @@ const styles = StyleSheet.create({
     leftIcon:
     {
         fontSize: 17,
-        color: '#0A8791',
+        color: Color.bgPrimary,
         marginLeft: 2,
         marginRight: 10
     },
@@ -197,11 +196,11 @@ const styles = StyleSheet.create({
     },
     textLogout: {
         fontSize: 15,
-        color: '#0A8791',
+        color: Color.bgPrimary,
         fontWeight: '500'
     },
     rightIcon: {
-        color: '#0A8791',
+        color: Color.bgPrimary,
         position: 'absolute',
         right: 10,
         top: 3,

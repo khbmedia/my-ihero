@@ -1,7 +1,8 @@
 import { SET_CREDENTIAL, USER } from "./action"
 
 const initialState={
-    data:null
+    data:null,
+    userData:null
 }
 const UserReducer=(state=initialState,action)=>{
     switch(action.type){

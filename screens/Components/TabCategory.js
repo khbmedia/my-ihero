@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
-import log from '../Assets/Images/Brand/image1.png';
+
 import { style } from "styled-system";
 const Category = props => {
     return props.CategoryList.map

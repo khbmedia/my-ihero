@@ -10,7 +10,7 @@ const App = () => {
     const rootReducer = combineReducers({
         shops: ShopReducer,
         items: ItemReducer,
-        users: UserReducer
+        users: UserReducer,
     });
     const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
     return (

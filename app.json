@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "app-depot25",
-    "slug": "app-depot25",
+    "name": "I-hero",
+    "slug": "i-hero",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
