@@ -7,26 +7,42 @@ import {
     NativeBaseProvider,
     List
 } from 'native-base';
+import { Dimensions } from 'react-native';
+import {
+    Input
+} from 'native-base';
 import Color from '../../constant/Color';
-import { AntDesign,Feather } from '@expo/vector-icons';
+import { AntDesign, Feather } from '@expo/vector-icons';
 const Search = ({ navigation }) => {
-    React.useEffect(()=>{
+    const width = Dimensions.get("window").width;
+    React.useEffect(() => {
         navigation.setOptions({
-            headerRight:()=>(<View style={{ flexDirection: 'row',justifyContent:"center",alignItems:"center",paddingRight:12 }}>
-                        <TouchableOpacity onPress={()=>{
-                            navigation.navigate("Search");
-                        }}><Feather name="search" size={24} color={Color.textPrimary}/></TouchableOpacity>
-                        </View>),
-                    headerTintColor:Color.textPrimary,
-                    title:"Restaurants",
-                    headerStyle:{
-                        backgroundColor:Color.bgPrimary
-                        ,elevation:0,
-                        shadowOpacity:0,
-                        borderBottomWidth:0,
-                    }
+            headerRight: () => (
+                <NativeBaseProvider>
+                    <View style={{ width: width, alignItems: 'center', height: '100%', justifyContent: 'center', flexDirection: 'row' }}>
+                        {/*<AntDesign style={{ fontSize: 25, color: 'white' }} name="left" />*/}
+                        <Input
+                            variant="outline"
+                            placeholder="Search your course name here..."
+                            //px={3}
+                            height={9}
+                            width="90%"
+                            borderRadius={5}
+                            bg="white"
+                        />
+                    </View>
+                </NativeBaseProvider>
+            ),
+            headerTintColor: Color.textPrimary,
+            title: "Restaurants",
+            headerStyle: {
+                backgroundColor: Color.bgPrimary
+                , elevation: 0,
+                shadowOpacity: 0,
+                borderBottomWidth: 0,
+            }
         })
-    },[]);
+    }, []);
     return (
         <View style={styles.content}>
             <ScrollView style={
