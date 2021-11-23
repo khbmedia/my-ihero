@@ -4,22 +4,11 @@ import { List, NativeBaseProvider, Switch, Button, } from "native-base";
 import { Ionicons, AntDesign, MaterialCommunityIcons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import CartDetail from '../Components/CartDetail';
 import { ImageBackground } from 'react-native';
+import Color from '../../constant/Color';
 const Dashboard = ({ route, navigation }) => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <View style={styles.header_Content}>
-                    <View style={styles.header_back}>
-                        <AntDesign name="left" size={24} color="#ffffff"
-                            onPress={() => navigation.goBack()} />
-                    </View>
-                    <View style={styles.header_center}>
-                        <Text style={styles.header_textCenter}>Profile</Text>
-                    </View>
-                    <View style={styles.header_Right}>
-                        <Ionicons name="notifications-outline" size={28} color="white" />
-                    </View>
-                </View>
                 <View style={{ flex: 2, flexDirection: 'row', alignItems: 'flex-start' }}>
                     <View style={{ flex: 1, width: '100%', height: '100%', padding: 10, paddingLeft: 30 }}>
                         <Image source={{ uri: "https://imagesvc.meredithcorp.io/v3/mm/image?q=85&c=sc&poi=face&w=2000&h=1333&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F20%2F2017%2F07%2Fjustin-bieber2-1.jpg" }}
@@ -31,17 +20,17 @@ const Dashboard = ({ route, navigation }) => {
                     </View>
                 </View>
             </View>
-            <View style={{ flex: 7, backgroundColor: '#0A8791', alignItems: 'center' }}>
+            <View style={{ flex: 7, backgroundColor: Color.bgPrimary, alignItems: 'center' }}>
                 <View style={{ flex: 1, backgroundColor: '#e6e6e6', width: '100%', borderTopLeftRadius: 300, alignItems: 'center' }}>
                     <View style={{ backgroundColor: '#fff', width: '90%', height: '17%', borderRadius: 20, top: -30, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', padding: 10 }}>
                         <View style={{ flex: 1, height: '90%', alignItems: 'center', flexDirection: 'column' }}>
-                         
+
                             <Image source={{ uri: 'https://image.flaticon.com/icons/png/512/619/619043.png' }}
                                 style={styles.titleCart} />
                             <Text style={{ color: '#4d4d4d' }}>Delivery</Text>
                         </View>
 
-                        <View style={{ flex: 1, height: '90%', alignItems: 'center', flexDirection: 'column' }}> 
+                        <View style={{ flex: 1, height: '90%', alignItems: 'center', flexDirection: 'column' }}>
                             <Image source={{ uri: 'https://image.flaticon.com/icons/png/512/3566/3566511.png' }}
                                 style={styles.titleCart} />
                             <Text style={{ color: '#4d4d4d' }}>Cart</Text>
@@ -65,7 +54,7 @@ const Dashboard = ({ route, navigation }) => {
                                             <AntDesign style={styles.rightIcon} name="right" />
                                         </List.Item>
                                     </TouchableOpacity>
-                                    <TouchableOpacity   onPress={() => navigation.navigate("Order")} >
+                                    <TouchableOpacity onPress={() => navigation.navigate("Order")} >
                                         <List.Item style={styles.borderitem} >
                                             <FontAwesome5 style={styles.leftIcon} name="user" />
                                             <Text style={styles.textCenter}>My Product</Text>
@@ -123,8 +112,8 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     header: {
-        flex: 3,
-        backgroundColor: '#0A8791',
+        flex: 2,
+        backgroundColor: Color.bgPrimary,
         borderBottomRightRadius: 400,
     },
     header_Content: {
@@ -134,9 +123,9 @@ const styles = StyleSheet.create({
     },
     header_back: {
         flex: 3,
-        backgroundColor: '#0A8791',
+        backgroundColor: Color.bgPrimary,
         borderBottomRightRadius: 400,
-        paddingLeft:10
+        paddingLeft: 10
 
     },
     header_Detail: {
@@ -162,7 +151,7 @@ const styles = StyleSheet.create({
     userImg: {
         width: 80,
         height: 80,
-        borderRadius: 50
+        borderRadius: 50,
     },
     borderitem: {
         height: 50,
@@ -186,7 +175,7 @@ const styles = StyleSheet.create({
     leftIcon:
     {
         fontSize: 17,
-        color: '#0A8791',
+        color: Color.bgPrimary,
         marginLeft: 2,
         marginRight: 10
     },
@@ -197,11 +186,11 @@ const styles = StyleSheet.create({
     },
     textLogout: {
         fontSize: 15,
-        color: '#0A8791',
+        color: Color.bgPrimary,
         fontWeight: '500'
     },
     rightIcon: {
-        color: '#0A8791',
+        color: Color.bgPrimary,
         position: 'absolute',
         right: 10,
         top: 3,
