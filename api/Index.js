@@ -118,5 +118,16 @@ export const User = {
     checkLogin: async (credential) => {
         let result = await axios.post('/login', credential);
         return result;
+    },
+    logout:async(token)=>{
+        let result = await axios.get('/user-revoke',{
+            headers:{
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+                Accept: "application/json",
+            }
+        });
+        return result;
+
     }
 }

@@ -3,9 +3,10 @@ import { StyleSheet, ScrollView, Image, View, Text, TouchableOpacity } from 'rea
 import { List, NativeBaseProvider, Switch } from "native-base";
 import {  AntDesign, FontAwesome5 } from '@expo/vector-icons';
 import Color from '../../constant/Color';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { logout } from '../../store/user/action';
 const Dashboard = ({ route, navigation }) => {
+    const userData = useSelector(state => state.users.userData);
     const dispatch=useDispatch();
     return (
         <View style={styles.container}>
@@ -86,7 +87,7 @@ const Dashboard = ({ route, navigation }) => {
                                             <Switch size="sm" style={styles.rightIcon} />
                                         </List.Item>
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => dispatch(logout())}>
+                                    <TouchableOpacity onPress={() => dispatch(logout(userData.token))}>
                                         <List.Item style={styles.borderitem}>
                                             <FontAwesome5 style={styles.leftIcon} name="history" />
                                             <Text style={styles.textLogout}>Log Out </Text>
