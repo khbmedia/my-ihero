@@ -34,14 +34,7 @@ const Shops = ({ navigation }) => {
                 name="ShopProfile"
                 component={ShopProfile}
                 options={{
-                    headerRight: () => (
-                        <View style={{ flexDirection: 'row', justifyContent: "center", alignItems: "center", paddingRight: 12 }}>
-                            <TouchableOpacity onPress={() => navigation.navigate('Search')}
-                            >
-                                <Feather name="search" size={24} color={Color.textPrimary} />
-                            </TouchableOpacity>
-                        </View>
-                    ),
+
                     headerTintColor: Color.textPrimary,
                     title: "Restaurants",
                     headerStyle: {

@@ -23,7 +23,6 @@ const ScreenCart = ({ navigation }) => {
                                 return (
                                     <View style={styles.card} key={ele.id}>
                                         <Cart
-
                                             id={ele.id}
                                             name={ele.name}
                                             price={ele.product_variation[0].product_variation_condition[0].price_in_unit}
@@ -41,9 +40,7 @@ const ScreenCart = ({ navigation }) => {
                                 <Text style={{ color: 'gray', fontWeight: '500' }}> Add Promo Coden
                                 </Text>
                             </View>
-
                             <View style={{ flex: 1, alignItems: 'flex-end' }}>
-
                                 <AntDesign name="right" size={24} color="black" style={{}} />
                             </View>
 
@@ -58,8 +55,8 @@ const ScreenCart = ({ navigation }) => {
                                 <Text style={{ fontSize: 16, fontWeight: '500' }}>$2.00</Text>
                             </View>
                             <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 26, height: 45, alignItems: 'center' }}>
-                                <Text style={{ fontSize: 16, fontWeight: '500', color: '#0A8791' }}>Delivery</Text>
-                                <Text style={{ fontSize: 16, fontWeight: '500', color: '#0A8791' }}>free</Text>
+                                <Text style={{ fontSize: 16, fontWeight: '500', color: Color.textPrimary }}>Delivery</Text>
+                                <Text style={{ fontSize: 16, fontWeight: '500', color: Color.textPrimary }}>free</Text>
                             </View>
                             <View style={{
                                 flex: 1, flexDirection: 'row', justifyContent: 'space-between'
