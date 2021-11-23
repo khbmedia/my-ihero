@@ -1,18 +1,10 @@
-
-import * as React from 'react';
-import { } from 'react-native';
-import { TouchableOpacity } from 'react-native';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
-import {
-    NativeBaseProvider,
-    List
-} from 'native-base';
-import Color from '../../constant/Color';
-import { AntDesign,Feather } from '@expo/vector-icons';
+import React from "react";
+import { View, StyleSheet, TouchableOpacity, Text, ScrollView } from "react-native";
+import { NativeBaseProvider, List } from "native-base";
+import { AntDesign, Ionicons, FontAwesome } from "@expo/vector-icons";
 const Search = ({ navigation }) => {
-    React.useEffect(()=>{
-  
-    },[]);
+    const [data, setDate] = React.useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+    const [ActiveList, setActiveList] = React.useState(1)
     return (
         <View style={styles.content}>
             <ScrollView style={
@@ -72,9 +64,8 @@ const Search = ({ navigation }) => {
             </ScrollView>
 
         </View>
-    )
-}
-
+    );
+};
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -124,5 +115,6 @@ const styles = StyleSheet.create({
         fontSize: 17,
         fontWeight: '600'
     }
+
 });
 export default Search;

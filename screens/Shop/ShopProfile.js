@@ -5,25 +5,19 @@ import { Tabs, NativeBaseProvider, Center } from 'native-base';
 import { View, Text, Image, ScrollView, Dimensions, StyleSheet, Button, IconButton } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BottomSheet from 'react-native-gesture-bottom-sheet';
-import Star from 'react-native-star-view';  
+import Star from 'react-native-star-view';
 import ListFood from '../Components/Food/ListFood';
 import { Feather, AntDesign, Ionicons } from '@expo/vector-icons';
 import { ImageBackground } from 'react-native';
-import { getAllItem,getAllCategory } from '../../store/item/action';
-import { useDispatch,useSelector } from 'react-redux';
+import { getAllItem, getAllCategory } from '../../store/item/action';
+import { useDispatch, useSelector } from 'react-redux';
 import Color from '../../constant/Color';
 const { width, height } = Dimensions.get("window");
-const ShopProfile = ({ route,navigation }) => {
-    const items=useSelector(state=>state.items);
-    const {params}=route;
-    const dispatch=useDispatch();
+const ShopProfile = ({ route, navigation }) => {
+    const items = useSelector(state => state.items);
+    const { params } = route;
+    const dispatch = useDispatch();
     useEffect(() => {
-        navigation.setOptions({
-            title:params.name,
-            headerTitleAlign:"center",
-            headerRight:()=><Feather name="upload" size={24} color={Color.textPrimary}
-            style={{paddingRight:15}} onPress={() => bottomSheet.current.show()} />
-        })
         dispatch(getAllItem(params.id));
         dispatch(getAllCategory(params.id));
     }, [dispatch]);
@@ -31,23 +25,28 @@ const ShopProfile = ({ route,navigation }) => {
     return (
         <View style={{ flex: 1, flexDirection: "column" }}>
             <ImageBackground source={{ uri: params.cover }}
-                style={{ width: '100%', flex: 1 }} borderBottomRightRadius={100} >
-              
+                style={{ width: '100%', flex: 1 }} borderBottomRightRadius={50} >
+
             </ImageBackground>
             <View style={{ flex: 2, }}>
                 <ScrollView >
-                    <View style={{ flex: 1, padding: 6, paddingHorizontal: 18 }}>
-                        <Text style={styles.shopname}> {params.name}</Text>
-                        <Text style={styles.shopabout}> {params.city}</Text>
-                        <Star score={4} style={styles.starStyle} />
-                    </View>
-                    <View style={{ flex: 5 }}> 
-                    <ScrollView showsVerticalScrollIndicator={false}>
-                        <View style={styles.Container}>
-                            <ListFood DataFood={items.allItem} />
+                    <View style={{ flex: 1, padding: 6, paddingHorizontal: 18, flexDirection: 'row' }}>
+                        <View style={{ height: '100%', justifyContent: 'center' }}>
+                            <Image source={{ uri: params.logo }} style={{ width: 50, height: 50, borderRadius: 50 }} />
                         </View>
-                    </ScrollView>
-                        
+                        <View style={{ flex: 1, width: '100%' }}>
+                            <Text style={styles.shopname}> {params.name}</Text>
+                            <Text style={styles.shopabout}> {params.city}</Text>
+                            <Star score={4} style={styles.starStyle} />
+                        </View>
+                    </View>
+                    <View style={{ flex: 5 }}>
+                        <ScrollView showsVerticalScrollIndicator={false}>
+                            <View style={styles.Container}>
+                                <ListFood DataFood={items.allItem} />
+                            </View>
+                        </ScrollView>
+
                     </View>
                 </ScrollView>
             </View>
@@ -94,14 +93,6 @@ const ShopProfile = ({ route,navigation }) => {
                     </View>
                 </View>
             </BottomSheet>
-            {/* <Modal
-                entry="bottom"
-                backdropPressToClose={true}
-                isOpen={modalVisible}
-                style={styles.modalBox}
-                onClosed={() => setModalVisible(false)}  >
-                
-            </Modal> */}
         </View>
 
     )
@@ -149,7 +140,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     shopname: {
-        fontSize: 23,
+        fontSize: 15,
         fontWeight: '500',
     },
     shopabout: {
