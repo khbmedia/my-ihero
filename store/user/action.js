@@ -1,11 +1,15 @@
+import * as api from "../../api/Index";
 export const USER='USER';
-export const LOGIN='LOGIN';
-
+export const SET_CREDENTIAL='SET_CREDENTIAL';
+export const setCredential=(data)=>{
+    return {type:SET_CREDENTIAL,data:data};
+}
 export const checkLogin=(credential)=>{
     return dispatch=>{
-        
-        api.Shop.getAllShop().then(response=>{
-            if(response.data) dispatch({type:LOGIN,credential:credential});
+        api.User.checkLogin(credential).then(response=>{
+            if(response.data.success){
+                dispatch(setCredential(data));
+            }
         });
     }
 }
