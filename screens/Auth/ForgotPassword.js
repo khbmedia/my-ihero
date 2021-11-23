@@ -20,7 +20,7 @@ import {
 const ForgotPassword = ({ navigation }) => {
     return (
     <NativeBaseProvider>
-        <ImageBackground source={{uri:'https://c.stocksy.com/a/QDR400/z9/1057932.jpg'}} style={{flex:1,}}>
+        <ImageBackground source={require('../Assets/Background/Authentication.jpg')} style={{flex:1,}}>
       <Box flex={1} p={1}  w="94%" mx='auto' justifyContent="center"  > 
       <Text style={{fontSize:28,fontWeight:'600',color:'#009678',paddingVertical:20}}> Forget password</Text>
       <VStack space={2} mt={5}>

@@ -21,7 +21,7 @@ import {Pressable,ImageBackground} from 'react-native'
 const Register = ({ navigation }) => {
     return (
         <NativeBaseProvider>
-           <ImageBackground source={{uri:'https://c.stocksy.com/a/QDR400/z9/1057932.jpg'}} style={{flex:1,}}>
+           <ImageBackground source={require('../Assets/Background/Authentication.jpg')} style={{flex:1,}}>
             <Box flex={1} p={1} w="93%" mx='auto' justifyContent="center"  >
                 <Text style={{fontSize:29,fontWeight:'700' ,color: 'white',paddingVertical:20}}>Create Account</Text>
                 <Text style={{fontSize:16,color:"#e6e6e6",paddingBottom:20}}>Enter Your Username ,Email and passworto sign up.

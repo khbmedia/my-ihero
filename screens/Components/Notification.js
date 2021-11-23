@@ -1,12 +1,12 @@
 import React from "react";
 import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
-import Pic from '../Assets/Images/Brand/image1.png'
+// import Pic from '../Assets/Images/Brand/image1.png'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 const CourseByCategory = ({ props }) => {
 	return (
 		<TouchableOpacity style={styles.RootNotification}>
 			<View style={{ minWidth: 50, height: '100%' }}>
-				<Image source={Pic} style={styles.ImgStyle} />
+				{/* <Image source={Pic} style={styles.ImgStyle} /> */}
 			</View>
 			<View style={{ width: "80%" }}>
 				<Text style={styles.Detail}>

@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
 import { MaterialCommunityIcons, Feather, AntDesign } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux';
+import { checkLogin } from '../../store/user/action';
 import {
   NativeBaseProvider,
   Box,
@@ -17,6 +18,7 @@ import {
 } from 'native-base';
 import { ImageBackground } from 'react-native';
 const HomeScreen = ({ navigation }) => { 
+  const dispatch=useDispatch();
   const[email,setEmail]=useState(null);
   const[password,setPassword]=useState(null);
   return (
@@ -51,7 +53,13 @@ const HomeScreen = ({ navigation }) => {
 
           </FormControl>
           <VStack space={2}>
-            <Button colorScheme="teal" _text={{ color: 'white' }}onPress={() => navigation.navigate('Profile')}>
+            <Button colorScheme="teal" _text={{ color: 'white' }}onPress={() => {
+              let fd=new FormData();
+              fd.append("email",email);
+              fd.append("password",password);
+              fd.append("device","phone");
+              dispatch(checkLogin(fd));
+            }}>
               Log in
             </Button>
 
