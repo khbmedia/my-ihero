@@ -3,10 +3,10 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 const Tab = createMaterialBottomTabNavigator();
 import Home from "../screens/Home/HomeStack";
 import Cart from "../screens/Order/OrderStack"; 
-import Search from "../screens/Home/Search";
+import Search from "../screens/search/SearchStack";
 import Profile from "../screens/Profile/ProfileStack";
 import Shop from "../screens/Shop/ShopStack";
-import {  MaterialCommunityIcons, FontAwesome5,Entypo,FontAwesome,Feather } from '@expo/vector-icons'; 
+import {  FontAwesome5,Entypo,FontAwesome,Feather } from '@expo/vector-icons'; 
 import Color from "../constant/Color";
 const Tabs = () => {
     return (
@@ -14,7 +14,6 @@ const Tabs = () => {
             inactiveColor={Color.textPrimary}
             barStyle={{ backgroundColor: Color.bgPrimary }}> 
             <Tab.Screen 
-            
                 name="Home"
                 component={Home}
                 options={{ 

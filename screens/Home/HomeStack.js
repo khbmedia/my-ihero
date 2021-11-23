@@ -7,9 +7,7 @@ import Home from "./Home";
 import ShopProfile from './ShopProfile';
 import Product from '../Product/ProductStack';
 import Filter from '../Home/Filter';
-import Search from './Search';
-import GetStart from './GetStart';
-import BrandStack from '../Profile/Product/Brands/BrandsStack';
+import Search from '../search/Search';  
 import { View, Keyboard,Text } from 'react-native';
 import { Ionicons,EvilIcons } from '@expo/vector-icons';
 import {
@@ -39,8 +37,7 @@ const Homes = ({ navigation }) => {
                         shadowOpacity:0,
                         borderBottomWidth:0,
                     }
-                }}/>
-            <HomeStack.Screen name="GetStart" component={GetStart} options={{ header: () => null }}/>
+                }}/> 
             <HomeStack.Screen name="Filter" component={Filter} options={{ header: () => null }}/>
             <HomeStack.Screen name="Category" component={Category} />
             <HomeStack.Screen name="Search" component={Search}
@@ -73,9 +70,7 @@ const Homes = ({ navigation }) => {
             } }} />
             <HomeStack.Screen name="Brand" component={Brand} />
             <HomeStack.Screen name="Shop" component={Shop} options={{ }} />
-            <HomeStack.Screen name="ProductStack" component={Product} options={{ header: () => null }} />
-          
-            <HomeStack.Screen name="BrandStack" component={BrandStack} />
+            <HomeStack.Screen name="ProductStack" component={Product} options={{ header: () => null }} /> 
         </HomeStack.Navigator>
     )
 }

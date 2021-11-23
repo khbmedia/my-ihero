@@ -6,9 +6,7 @@ const DetailByCategory = ({ route,navigation }) => {
     const [obj, setObj] = useState(route.params.ele);
     console.log('Product Detail');
     const [ImageGalery, setImg] = useState(obj.product_image[1].path.split(','));
-    const AddToCart = (obj) => {
-        // console.log(obj)
-        // navigation.navigate("Cart",{obj});  
+    const AddToCart = (obj) => { 
          navigation.navigate("OrderStack", { screen: "Cart" , params :{obj} }) 
         console.log("send");
     }
@@ -24,9 +22,7 @@ const DetailByCategory = ({ route,navigation }) => {
                     </ImageBackground>)
                     }   
                 )}
-                </Swiper>
-                    {/* <Image style={{ width: '100%', height: 250, justifyContent: 'center' }} source={{uri:obj.product_image[0].path}} /> */}
-                </View>
+                </Swiper> </View>
                 <View style={styles.descriptionContainer}>
                     <View>
                         <Text style={{ fontSize: 23, fontWeight: 'bold' }}>{obj.name}</Text>
