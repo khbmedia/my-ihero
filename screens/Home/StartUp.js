@@ -3,6 +3,7 @@ import { ActivityIndicator, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredential } from "../../store/user/action";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Color from "../../constant/Color";
 
 const StartUp = ({ navigation }) => {
     const userData = useSelector(state => state.users.userData);
@@ -24,7 +25,7 @@ const StartUp = ({ navigation }) => {
   }, []);
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <ActivityIndicator size="large" />
+      <ActivityIndicator size="large" color={Color.textPrimary}/>
     </View>
   );
 };

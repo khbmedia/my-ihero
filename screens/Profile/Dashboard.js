@@ -4,7 +4,6 @@ import { List, NativeBaseProvider, Switch, } from "native-base";
 import { AntDesign, FontAwesome5, } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import Color from '../../constant/Color';
-import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/user/action';
 const Dashboard = ({ route, navigation }) => {
     const userData = useSelector(state => state.users.userData);
