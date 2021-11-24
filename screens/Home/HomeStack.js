@@ -16,6 +16,7 @@ import Color from '../../constant/Color';
 import Notification from './Notification'
 import Search from './Search'
 import StartUp from './StartUp';
+import ShopProfile from '../Shop/ShopProfile';
 const HomeStack = createStackNavigator();
 const Homes = ({ navigation }) => {
     return (
@@ -67,6 +68,21 @@ const Homes = ({ navigation }) => {
                     title: "Notification",
                     headerTintColor: Color.textPrimary,
                     headerTitleAlign: "center",
+                }} />
+            <HomeStack.Screen
+                name="ShopProfile"
+                component={ShopProfile}
+                options={{
+
+                    headerTintColor: Color.textPrimary,
+                    title: "Restaurants",
+                    headerStyle: {
+                        backgroundColor: Color.bgPrimary,
+                        elevation: 0,
+                        shadowOpacity: 0,
+                        borderBottomWidth: 0,
+                    },
+                    headerTitleAlign:"center"
                 }} />
             <HomeStack.Screen
                 name="Search"

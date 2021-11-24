@@ -42,7 +42,8 @@ const Shops = ({ navigation }) => {
                         elevation: 0,
                         shadowOpacity: 0,
                         borderBottomWidth: 0,
-                    }
+                    },
+                    headerTitleAlign:"center"
                 }} />
         </ShopStack.Navigator >
     )
