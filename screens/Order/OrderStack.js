@@ -19,14 +19,7 @@ const Orders = () => {
                     headerTitleAlign: 'center',
                     headerStyle: {
                         backgroundColor: Color.bgPrimary
-                    },
-                    headerRight: () => (
-                        <View style={{ flexDirection: 'row', justifyContent: "center", alignItems: "center", paddingRight: 12 }}>
-                            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-                                <Feather name="search" size={24} color={Color.textPrimary} />
-                            </TouchableOpacity>
-                        </View>
-                    ),
+                    }
                 }} />
             <OrderStack.Screen name="Payment" component={Payment}
                 options={{

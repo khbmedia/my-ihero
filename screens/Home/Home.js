@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react'
-import { View, StyleSheet, Text, ScrollView, Keyboard } from 'react-native';
-import { NativeBaseProvider, VStack, Input, Icon, Tabs } from 'native-base';
+import { View, StyleSheet, Text, ScrollView } from 'react-native';
+import { NativeBaseProvider, Tabs } from 'native-base';
 import Product from '../Components/Product';
 import HomeproductBuy from '../Components/HomeproductBuy';
-import { EvilIcons, Ionicons, FontAwesome5, SimpleLineIcons, AntDesign } from '@expo/vector-icons';
+import { Ionicons, FontAwesome5, SimpleLineIcons, AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllShop, getTopRate } from "../../store/shop/action";
 import { getFavorite } from "../../store/item/action";
 import Color from '../../constant/Color';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 const Home = ({ navigation }) => {
     const shopData = useSelector(state => state.shops);
     const itemData = useSelector(state => state.items);
