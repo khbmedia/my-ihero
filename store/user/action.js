@@ -10,23 +10,24 @@ export const setCredential = (data) => {
 export const setError = (data) => {
     return { type: SET_ERROR, data: data };
 }
-export const logout=(token)=>{
-    return dispatch=>{
-        api.User.logout(token).then(response=>{
-            if(response.data.success){
+export const logout = (token) => {
+    return dispatch => {
+        api.User.logout(token).then(response => {
+            if (response.data.success) {
                 dispatch(setCredential(null));
                 AsyncStorage.removeItem('data');
-            }else{
+            } else {
                 console.log(response.data.error);
             }
         })
-        
+
     }
 }
 export const checkLogin = (credential) => {
     return dispatch => {
         api.User.checkLogin(credential).then(response => {
             if (response.data.success) {
+                console.log(response.data.success);
                 dispatch(setCredential(response.data.success));
                 AsyncStorage.setItem('data', JSON.stringify(response.data.success));
             } else {

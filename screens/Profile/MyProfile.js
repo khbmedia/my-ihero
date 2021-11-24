@@ -1,124 +1,227 @@
-import * as React from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable, TouchableOpacity, Image } from 'react-native';
-import { MaterialCommunityIcons, Ionicons, EvilIcons, FontAwesome5, AntDesign, Feather, MaterialIcons } from '@expo/vector-icons';
-import { List, Icon, IconButton, NativeBaseProvider, Box, VStack, FormControl, Input, Button, HStack, Heading, Switch } from "native-base";
+import React, { useState, useEffect } from "react";
+import {
+    View,
+    Text,
+    TouchableOpacity,
+    ScrollView,
+    StyleSheet,
+    ImageBackground,
+} from "react-native";
+import { EvilIcons, AntDesign } from "@expo/vector-icons";
+import {
+    NativeBaseProvider,
+    Input,
+} from "native-base";
+import Color from "../../constant/Color";
 const MyProfile = ({ navigation }) => {
     return (
-        <View style={{ backgroundColor: '#fff', flex: 1, justifyContent: 'center', alignItems: 'center', color: 'white' }} >
-            <View style={{ flex: 0.5, backgroundColor: '#fff', flexDirection: 'row', alignItems: 'flex-end' }}>
-                <View style={{ flex: 4 }}>
-                    <AntDesign name="left" size={24} color="#000000"
-                        onPress={() => navigation.goBack()} />
-                </View>
-                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                    <Text style={{fontSize:17, color:'#0A8791',fontWeight:'500'}}>Save</Text>
-                </View>
-            </View>
+        <NativeBaseProvider>
+            <View style={styles.container}>
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    <View style={styles.container}>
+                        <View style={styles.header}>
+                            <TouchableOpacity
+                                style={{
+                                    position: "absolute",
+                                    bottom: -40,
+                                    alignSelf: "center",
+                                }}
+                            >
+                                <ImageBackground
+                                    source={{
+                                        uri: "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg",
+                                    }}
+                                    style={styles.styleimg}
+                                    borderRadius={100}
+                                >
+                                    <TouchableOpacity
+                                        onPress={() => pickImage()}
+                                        style={{
+                                            backgroundColor: "#D8DADF",
+                                            width: 35,
+                                            height: 35,
+                                            textAlign: "right",
+                                            position: "absolute",
+                                            bottom: 1,
+                                            right: 1,
+                                            borderRadius: 100,
+                                            flex: 1,
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                        }}
+                                    >
+                                        <ImageBackground
+                                            onPress={() => pickImage()}
+                                            style={{
+                                                width: 23,
+                                                height: 23,
+                                            }}
+                                            source={{
+                                                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7nI57fSOhDQYHQ5mcHrAAJ_GJ-cmNc9Otva4xf-hhAIVlMCYsCsV_7h40cOzgGcKKtBk&usqp=CAU",
+                                            }}
+                                        ></ImageBackground>
+                                    </TouchableOpacity>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ flex: 1, width: '100%', height: "100%", padding: 10 }}>
 
-            <View style={{ backgroundColor: '#fff', width: '100%', flex: 1.2, justifyContent: 'center', alignItems: 'center', }} >
-                <Image source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYYSq18n-L2WyTypr6JzxmWP8_Vz9RqN97Pg&usqp=CAU' }}
-                    style={{ width: 100, height: 100, borderRadius: 100 }} />
-            </View>
-            <View style={{
-                backgroundColor: '#fff', width: '90%', flex: 3, borderRadius: 10, shadowColor: 'gray',
-                shadowColor: '#000',
-                shadowOffset: {
-                  width: 0,
-                  height: 2,
-                },
-                shadowOpacity: 0.23,
-                shadowRadius: 2.62,
-                elevation: 4,
-                marginBottom:7
-            }}>
-                <NativeBaseProvider>
-                    <ScrollView style={{ margin: 10 }} showsVerticalScrollIndicator={false}>
-                        <List borderColor='#fff' >
-                            <Text style={{ fontSize: 17, fontWeight: '600', paddingLeft: 10 ,color:'#737373'}}>My Account</Text>
-                            <TouchableOpacity onPress={() => navigation.navigate("MyProfile")}>
-                                <List.Item style={styles.borderitem} >
-                                    <FontAwesome5 style={styles.leftIcon} name="user" />
-                                    <Text style={styles.textCenter}>Profile</Text>
-                                    <AntDesign style={styles.rightIcon} name="right" />
-                                </List.Item>
-                            </TouchableOpacity>
-                            <TouchableOpacity  >
-                                <List.Item style={styles.borderitem} >
-                                    <FontAwesome5 style={styles.leftIcon} name="user" />
-                                    <Text style={styles.textCenter}>My Product</Text>
-                                    <AntDesign style={styles.rightIcon} name="right" />
-                                </List.Item>
-                            </TouchableOpacity>
+                            <View style={{ width: '100%', flexDirection: 'row', maxHeight: 50, backgroundColor: '#ffffff', alignItems: 'center', marginBottom: 10 }}>
+                                <View style={{ width: "10%", height: '80%', alignItems: 'center', justifyContent: 'center', borderRightWidth: 1, borderRightColor: '#e6e6e6' }}>
+                                    <AntDesign name="user" size={20} color="black" />
+                                </View>
+                                <View style={{ width: '90%', flexDirection: 'row' }}>
+                                    <Input
+                                        style={{
+                                            borderColor: "#ffffff",
+                                            backgroundColor: "#ffffff",
+                                            borderRadius: 3,
+                                        }}
 
-                            <TouchableOpacity >
-                                <List.Item style={styles.borderitem}>
-                                    <AntDesign name="mail" style={styles.leftIcon} />
-                                    <Text style={styles.textCenter} >Payment History</Text>
-                                    <AntDesign style={styles.rightIcon} name="right" />
 
-                                </List.Item>
-                            </TouchableOpacity>
-                            
-                            <TouchableOpacity  >
-                                <List.Item style={styles.borderitem}>
-                                    <FontAwesome5 style={styles.leftIcon} name="history" />
-                                    <Text style={styles.textCenter} >Notification </Text>
-                                    <Switch size="sm" style={styles.rightIcon} isChecked='true' />
-                                </List.Item>
-                            </TouchableOpacity>
-                            <TouchableOpacity   >
-                                <List.Item style={styles.borderitem}>
-                                    <FontAwesome5 style={styles.leftIcon} name="history" />
-                                    <Text style={styles.textCenter} >Promote </Text>
-                                    <Switch size="sm" style={styles.rightIcon} />
-                                </List.Item>
-                            </TouchableOpacity>
-                            <TouchableOpacity  >
-                                <List.Item style={styles.borderitem}>
-                                    <FontAwesome5 style={styles.leftIcon} name="history" />
-                                    <Text style={styles.textLogout}>Log Out </Text>
-                                    <AntDesign style={styles.rightIcon} name="right" />
-                                </List.Item>
-                            </TouchableOpacity>
+                                        width='100%'
+                                        placeholder="Enter First Name"
+                                        height={12}
+                                        keyboardType='default'
 
-                        </List>
-                    </ScrollView>
-                </NativeBaseProvider>
-            </View>
-        </View>
-    )
-}
+                                    />
+                                </View>
+                            </View>
+                            <View style={{ width: '100%', flexDirection: 'row', maxHeight: 50, backgroundColor: '#ffffff', alignItems: 'center', marginBottom: 10 }}>
+                                <View style={{ width: "10%", height: '80%', alignItems: 'center', justifyContent: 'center', borderRightWidth: 1, borderRightColor: '#e6e6e6' }}>
+                                    <AntDesign name="user" size={20} color="black" />
+                                </View>
+                                <View style={{ width: '90%', flexDirection: 'row' }}>
+                                    <Input
+                                        style={{
+                                            borderColor: "#ffffff",
+                                            backgroundColor: "#ffffff",
+                                            borderRadius: 3,
+                                        }}
+
+                                        width='100%'
+                                        placeholder="Enter Last Name"
+                                        height={12}
+                                        keyboardType='default'
+                                    />
+                                </View>
+                            </View>
+                            <View style={{ width: '100%', flexDirection: 'row', maxHeight: 50, backgroundColor: '#ffffff', alignItems: 'center', marginBottom: 10 }}>
+                                <View style={{ width: "10%", height: '80%', alignItems: 'center', justifyContent: 'center', borderRightWidth: 1, borderRightColor: '#e6e6e6' }}>
+                                    <AntDesign name="mail" size={20} color="black" />
+                                </View>
+                                <View style={{ width: '90%' }}>
+                                    <Input
+                                        style={{
+                                            borderColor: "#ffffff",
+                                            backgroundColor: "#ffffff",
+                                            borderRadius: 3,
+                                        }}
+
+                                        width='100%'
+                                        placeholder="Enter Email"
+                                        height={12}
+                                        keyboardType='email-address'
+                                    />
+                                </View>
+                            </View>
+                            <View style={{ width: '100%', flexDirection: 'row', maxHeight: 50, backgroundColor: '#ffffff', alignItems: 'center', marginBottom: 10 }}>
+                                <View style={{ width: "10%", height: '80%', alignItems: 'center', justifyContent: 'center', borderRightWidth: 1, borderRightColor: '#e6e6e6' }}>
+                                    <AntDesign name="phone" size={20} color="black" />
+                                </View>
+                                <View style={{ width: '90%' }}>
+                                    <Input
+                                        style={{
+                                            borderColor: "#ffffff",
+                                            backgroundColor: "#ffffff",
+                                            borderRadius: 3,
+                                        }}
+
+                                        width='100%'
+                                        placeholder="Enter Phone Number"
+                                        height={12}
+                                        keyboardType='numeric'
+                                    />
+                                </View>
+                            </View>
+                            <View style={{ width: '100%', flexDirection: 'row', maxHeight: 50, backgroundColor: '#ffffff', alignItems: 'center', marginBottom: 10 }}>
+                                <View style={{ width: "10%", height: '80%', alignItems: 'center', justifyContent: 'center', borderRightWidth: 1, borderRightColor: '#e6e6e6' }}>
+                                    <EvilIcons name="location" size={24} color="black" />
+                                </View>
+                                <View style={{ width: '90%' }}>
+                                    <Input
+                                        style={{
+                                            borderColor: "#ffffff",
+                                            backgroundColor: "#ffffff",
+                                            borderRadius: 3,
+                                        }}
+                                        width='100%'
+                                        placeholder="EnterCountry"
+                                        height={12}
+                                        keyboardType='default'
+                                    />
+                                </View>
+                            </View>
+                            <View style={{ width: '100%', flexDirection: 'row', maxHeight: 50, backgroundColor: '#ffffff', alignItems: 'center', marginBottom: 10 }}>
+                                <View style={{ width: "10%", height: '80%', alignItems: 'center', justifyContent: 'center', borderRightWidth: 1, borderRightColor: '#e6e6e6' }}>
+                                    <EvilIcons name="location" size={24} color="black" />
+                                </View>
+                                <View style={{ width: '90%' }}>
+                                    <Input
+                                        style={{
+                                            borderColor: "#ffffff",
+                                            backgroundColor: "#ffffff",
+                                            borderRadius: 3,
+                                        }}
+                                        width='100%'
+                                        placeholder="Enter City/Province"
+                                        height={12}
+                                        keyboardType='default'
+                                    />
+                                </View>
+                            </View>
+                            <TouchableOpacity style={styles.BtnSave} onPress={() => UpdateDataUser()}>
+                                <Text style={{ fontSize: 15, fontWeight: '500', color: 'white' }}>Save</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </ScrollView>
+            </View >
+        </NativeBaseProvider >
+    );
+};
 const styles = StyleSheet.create({
-    borderitem: {
-        borderBottomWidth: 1,
-        borderBottomColor:'#f2f2f2',
-        height: 60,
+    container: {
         flex: 1,
-        justifyContent: 'space-between',
+        width: "100%",
     },
-    leftIcon:
-    {
-        fontSize: 17,
-        color: 'gray',
-        marginLeft: 2,
-        marginRight: 10
+    header: {
+        flex: 4,
+        width: "100%",
+        height: 120,
+        backgroundColor: Color.bgPrimary,
+        marginBottom: 40,
     },
-    textCenter: {
-        fontSize: 14,
-        fontWeight: '400',
-        color:'gray'
+    content: {
+        flex: 10,
+        width: "100%",
+        paddingTop: 50,
     },
-    textLogout: {
-        fontSize: 16,
-        color: 'gray',
-        fontWeight: '600'
+    styleimg: {
+        alignSelf: "center",
+        borderRadius: 50,
+        width: 90,
+        height: 90,
     },
-    rightIcon: {
-        color: 'gray',
-        position: 'absolute',
-        right: 10,
-        top: 3,
-        fontSize: 24
+
+    BtnSave: {
+        width: '100%',
+        flexDirection: 'row',
+        minHeight: 40,
+        backgroundColor: Color.bgPrimary,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 10
     }
-})
+});
 export default MyProfile;

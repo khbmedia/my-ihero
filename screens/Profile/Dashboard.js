@@ -4,10 +4,9 @@ import { List, NativeBaseProvider, Switch, } from "native-base";
 import { AntDesign, FontAwesome5, } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import Color from '../../constant/Color';
-import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/user/action';
 const Dashboard = ({ route, navigation }) => {
-    const userData = useSelector(state => state.users.userData);
+    const userData = useSelector(state => state.users.userData.user);
     const dispatch = useDispatch();
     return (
         <View style={styles.container}>
@@ -58,37 +57,31 @@ const Dashboard = ({ route, navigation }) => {
                                             <AntDesign style={styles.rightIcon} name="right" />
                                         </List.Item>
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => navigation.navigate("Order")} >
+                                    <TouchableOpacity onPress={() => navigation.navigate("OrderReport")} >
                                         <List.Item style={styles.borderitem} >
                                             <FontAwesome5 style={styles.leftIcon} name="user" />
-                                            <Text style={styles.textCenter}>My Product</Text>
+                                            <Text style={styles.textCenter}>Order Report</Text>
                                             <AntDesign style={styles.rightIcon} name="right" />
                                         </List.Item>
                                     </TouchableOpacity>
 
-                                    <TouchableOpacity onPress={() => navigation.navigate("PaymentHistory")}>
+                                    <TouchableOpacity onPress={() => navigation.navigate("Affiliate")}>
                                         <List.Item style={styles.borderitem}>
                                             <AntDesign name="mail" style={styles.leftIcon} />
-                                            <Text style={styles.textCenter} >Payment History</Text>
+                                            <Text style={styles.textCenter} >Affiliate</Text>
                                             <AntDesign style={styles.rightIcon} name="right" />
 
                                         </List.Item>
                                     </TouchableOpacity>
-                                    <Text style={{ fontSize: 17, fontWeight: '700', paddingLeft: 10 }}>Notification</Text>
-                                    <TouchableOpacity onPress={() => navigation.navigate("PaymentHistory")}>
+                                    <TouchableOpacity onPress={() => navigation.navigate("WithDraw")}>
                                         <List.Item style={styles.borderitem}>
-                                            <FontAwesome5 style={styles.leftIcon} name="history" />
-                                            <Text style={styles.textCenter} >Notification </Text>
-                                            <Switch size="sm" style={styles.rightIcon} isChecked='true' />
+                                            <AntDesign name="mail" style={styles.leftIcon} />
+                                            <Text style={styles.textCenter} >WithDraw</Text>
+                                            <AntDesign style={styles.rightIcon} name="right" />
+
                                         </List.Item>
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => navigation.navigate("PaymentHistory")}>
-                                        <List.Item style={styles.borderitem}>
-                                            <FontAwesome5 style={styles.leftIcon} name="history" />
-                                            <Text style={styles.textCenter} >Promote </Text>
-                                            <Switch size="sm" style={styles.rightIcon} />
-                                        </List.Item>
-                                    </TouchableOpacity>
+
                                     <TouchableOpacity onPress={() => dispatch(logout(userData.token))}>
                                         <List.Item style={styles.borderitem}>
                                             <FontAwesome5 style={styles.leftIcon} name="history" />
