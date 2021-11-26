@@ -61,8 +61,14 @@ export const Notification = {
 
 }
 export const Order = {
-    getOrderCustomer: async () => {
-        let result = await axios.get('/customer/orderReport');
+    getOrderCustomer: async (token) => {
+        let result = await axios.get('/customer/orderReport', {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+                Accept: "application/json",
+            }
+        });
         return result;
     },
     createOrder: async (data, token) => {
@@ -119,15 +125,34 @@ export const User = {
         let result = await axios.post('/login', credential);
         return result;
     },
-    logout:async(token)=>{
-        let result = await axios.get('/user-revoke',{
-            headers:{
+    logout: async (token) => {
+        let result = await axios.get('/user-revoke', {
+            headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + token,
                 Accept: "application/json",
             }
         });
         return result;
-
-    }
+    },
+    getUserProfile: async (token) => {
+        let result = await axios.get('/front-end-customer', {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+                Accept: "application/json",
+            }
+        });
+        return result;
+    },
+    UpdateUserProfile: async (data, token) => {
+        let result = await axios.post('/customer-update', data, {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+                Accept: "application/json",
+            }
+        });
+        return result;
+    },
 }

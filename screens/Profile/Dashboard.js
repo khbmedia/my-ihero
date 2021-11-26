@@ -6,20 +6,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import Color from '../../constant/Color';
 import { logout } from '../../store/user/action';
 const Dashboard = ({ route, navigation }) => {
-    const userData = useSelector(state => state.users.userData.user);
+    const userData = useSelector(state => state.users.userData);
     const dispatch = useDispatch();
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <View style={{ flex: 2, flexDirection: 'row', alignItems: 'flex-start' }}>
                     <View style={{ flex: 1, width: '100%', height: '100%', padding: 10, paddingLeft: 30 }}>
-                        <Image source={{ uri: userData.profile }}
+                        <Image source={{ uri: userData.user.profile }}
                             style={styles.userImg}></Image>
                     </View>
-                    <View style={styles.header_Detail}>
-                        <Text style={styles.username}>{userData.name}</Text>
-                        <Text style={styles.useremail}>{userData.email}</Text>
-                        <Text style={styles.useremail}>{userData.address}</Text>
+                    <View style={styles.header_Detail} >
+                        <Text style={styles.username} onPress={() => console.log(userData.user.profile)}>{userData.user.name}</Text>
+                        <Text style={styles.useremail}>{userData.user.email}</Text>
+                        <Text style={styles.useremail}>{userData.user.address}</Text>
                     </View>
                 </View>
             </View>
@@ -97,7 +97,7 @@ const Dashboard = ({ route, navigation }) => {
 
                 </View>
             </View>
-        </View>
+        </View >
     )
 }
 

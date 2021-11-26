@@ -34,7 +34,6 @@ const Shops = ({ navigation }) => {
                 name="ShopProfile"
                 component={ShopProfile}
                 options={{
-
                     headerTintColor: Color.textPrimary,
                     title: "Restaurants",
                     headerStyle: {
@@ -43,7 +42,7 @@ const Shops = ({ navigation }) => {
                         shadowOpacity: 0,
                         borderBottomWidth: 0,
                     },
-                    headerTitleAlign:"center"
+                    headerTitleAlign: "center"
                 }} />
         </ShopStack.Navigator >
     )

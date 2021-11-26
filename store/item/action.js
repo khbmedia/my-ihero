@@ -7,7 +7,7 @@ export const getAllItem = (shopId) => {
     return dispatch => {
         api.Item.getMenuByRestaurantId(shopId).then(response => {
             if (response.data.success) {
-                console.log(response.data.success.data)
+                console.log(response.data.success)
                 dispatch({ type: ALL_ITEM, data: response.data.success })
             }
         });

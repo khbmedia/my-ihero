@@ -1,16 +1,20 @@
-import { SET_CREDENTIAL, SET_ERROR, USER } from "./action"
+import { SET_CREDENTIAL, SET_ERROR, USER, SET_PROFILE } from "./action"
 
-const initialState={
-    data:null,
-    userData:null,
-    error:null
+const initialState = {
+    data: null,
+    userData: null,
+    error: null,
+    profileData: null
 }
-const UserReducer=(state=initialState,action)=>{
-    switch(action.type){
-        case USER:return {...state,data:action.data};
-        case SET_CREDENTIAL:return {...state,userData:action.data};
-        case SET_ERROR:return {...state,error:action.data};
-        default:return state;
+const UserReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case USER: return { ...state, data: action.data };
+        case SET_CREDENTIAL: return { ...state, userData: action.data };
+        case SET_ERROR: return { ...state, error: action.data };
+        case SET_ERROR: return { ...state, error: action.data };
+        case SET_PROFILE: return { ...state, profileData: action.data };
+        default: return state;
     }
 }
 export default UserReducer;
+

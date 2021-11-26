@@ -7,8 +7,16 @@ import {
 import { Tabs, NativeBaseProvider } from "native-base";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Report from "../Components/Report";
+import { useDispatch, useSelector } from 'react-redux';
+import { getOrderCustomer } from '../../store/order/action'
 const OrderReport = ({ navigation }) => {
 	const [Data, setData] = useState([1, 2, 3, 4, 5])
+	const userData = useSelector(state => state.users.userData);
+	const DataReport = useSelector(state => state.orders.data);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getOrderCustomer(userData.token));
+	}, [dispatch])
 	return (
 		<NativeBaseProvider>
 			<View style={styles.container}>
@@ -20,11 +28,11 @@ const OrderReport = ({ navigation }) => {
 								style={{
 									flex: 1,
 									flexDirection: "column",
-									justifyContent: "center",
-								}}
-							>
-								<Report />
-
+									justifyContent: "center"
+								}} >
+								{DataReport ? (
+									<Report ReportVal={DataReport} />
+								) : false}
 							</View>
 						</ScrollView>
 					</SafeAreaView>

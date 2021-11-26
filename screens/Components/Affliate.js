@@ -19,7 +19,7 @@ const AffiliateComponnent = (props) => {
 									<Text style={styles.title}>Customer Name</Text>
 								</View>
 								<View style={{ flex: 1 }}>
-									<Text style={styles.data}>: Dunhvidou</Text>
+									<Text style={styles.data}>:  </Text>
 								</View>
 							</View>
 							<View style={{ flex: 1, width: '100%', flexDirection: 'row' }}>
@@ -27,7 +27,7 @@ const AffiliateComponnent = (props) => {
 									<Text style={styles.title}>Restaurant Name</Text>
 								</View>
 								<View style={{ flex: 1 }}>
-									<Text style={styles.data}>: 00000001</Text>
+									<Text style={styles.data}>:  </Text>
 								</View>
 							</View>
 							<View style={{ flex: 1, width: '100%', flexDirection: 'row' }}>
@@ -35,7 +35,7 @@ const AffiliateComponnent = (props) => {
 									<Text style={styles.title}>Due Amount</Text>
 								</View>
 								<View style={{ flex: 1 }}>
-									<Text style={styles.data}>: 90</Text>
+									<Text style={styles.data}>:  </Text>
 								</View>
 							</View>
 							<View style={{ flex: 1, width: '100%', flexDirection: 'row' }}>
@@ -43,7 +43,7 @@ const AffiliateComponnent = (props) => {
 									<Text style={styles.title}>Invoice ID	</Text>
 								</View>
 								<View style={{ flex: 1 }}>
-									<Text style={styles.data}>: ok</Text>
+									<Text style={styles.data}>:    </Text>
 								</View>
 							</View>
 						</View>

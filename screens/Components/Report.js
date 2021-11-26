@@ -7,9 +7,9 @@ import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 const Report = (props) => {
 	const navigation = useNavigation();
-
-	return (
-		<TouchableOpacity style={styles.borderitem}    >
+	return props.ReportVal.map((ele, idx) =>
+	(
+		<TouchableOpacity style={props.ReportVal, styles.borderitem} key={idx}    >
 			<View style={styles.menuBrand}>
 				<Box bg="white" shadow={2} rounded="lg" width="99%" padding={3} mb={2} mx='auto' justifyContent="center" >
 					<VStack space={1} height={90}>
@@ -19,15 +19,15 @@ const Report = (props) => {
 									<Text style={styles.title}>Restaurant</Text>
 								</View>
 								<View style={{ flex: 1 }}>
-									<Text style={styles.data}>: Dunhvidou</Text>
+									<Text style={styles.data}>:{ele.restuarant_name ? ele.restuarant_name : ' No name'}</Text>
 								</View>
 							</View>
 							<View style={{ flex: 1, width: '100%', flexDirection: 'row' }}>
 								<View style={{ flex: 1 }}>
-									<Text style={styles.title}> Invoice</Text>
+									<Text style={styles.title}>Invoice</Text>
 								</View>
 								<View style={{ flex: 1 }}>
-									<Text style={styles.data}>: 00000001</Text>
+									<Text style={styles.data}>: {ele.invoice_number_by_vender ? ele.invoice_number_by_vender : ''} </Text>
 								</View>
 							</View>
 							<View style={{ flex: 1, width: '100%', flexDirection: 'row' }}>
@@ -35,7 +35,7 @@ const Report = (props) => {
 									<Text style={styles.title}>Amount(USD)</Text>
 								</View>
 								<View style={{ flex: 1 }}>
-									<Text style={styles.data}>: 90</Text>
+									<Text style={styles.data}>: {ele.amount}</Text>
 								</View>
 							</View>
 							<View style={{ flex: 1, width: '100%', flexDirection: 'row' }}>
@@ -43,15 +43,15 @@ const Report = (props) => {
 									<Text style={styles.title}>Recieved	</Text>
 								</View>
 								<View style={{ flex: 1 }}>
-									<Text style={styles.data}>: ok</Text>
+									<Text style={styles.data}>: {ele.is_customer_acept ? 'Ok' : 'Padding'}</Text>
 								</View>
 							</View>
 						</View>
 					</VStack>
 				</Box>
-
 			</View>
 		</TouchableOpacity>
+	)
 	)
 }
 const styles = StyleSheet.create({

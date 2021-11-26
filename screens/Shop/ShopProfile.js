@@ -23,78 +23,36 @@ const ShopProfile = ({ route, navigation }) => {
     }, [dispatch]);
     const bottomSheet = useRef();
     return (
-        <View style={{ flex: 1, flexDirection: "column" }}>
-            <ImageBackground source={{ uri: params.cover }}
-                style={{ width: '100%', flex: 1 }} borderBottomRightRadius={50} >
+        <NativeBaseProvider>
+            <View style={{ flex: 1, flexDirection: "column" }}>
+                <ImageBackground source={{ uri: params.cover }}
+                    style={{ width: '100%', flex: 1 }} borderBottomRightRadius={50} >
 
-            </ImageBackground>
-            <View style={{ flex: 2, }}>
-                <ScrollView >
-                    <View style={{ flex: 1, padding: 6, paddingHorizontal: 18, flexDirection: 'row' }}>
-                        <View style={{ height: '100%', justifyContent: 'center' }}>
-                            <Image source={{ uri: params.logo }} style={{ width: 50, height: 50, borderRadius: 50 }} />
-                        </View>
-                        <View style={{ flex: 1, width: '100%' }}>
-                            <Text style={styles.shopname}> {params.name}</Text>
-                            <Text style={styles.shopabout}> {params.city}</Text>
-                            <Star score={4} style={styles.starStyle} />
-                        </View>
-                    </View>
-                    <View style={{ flex: 5 }}>
-                        <ScrollView showsVerticalScrollIndicator={false}>
-                            <View style={styles.Container}>
-                                <ListFood DataFood={items.allItem} />
+                </ImageBackground>
+                <View style={{ flex: 2, }}>
+                    <ScrollView >
+                        <View style={{ flex: 1, padding: 6, paddingHorizontal: 18, flexDirection: 'row' }}>
+                            <View style={{ height: '100%', justifyContent: 'center' }}>
+                                <Image source={{ uri: params.logo }} style={{ width: 50, height: 50, borderRadius: 50 }} />
                             </View>
-                        </ScrollView>
+                            <View style={{ flex: 1, width: '100%' }}>
+                                <Text style={styles.shopname}> {params.name}</Text>
+                                <Text style={styles.shopabout}> {params.city}</Text>
+                                <Star score={4} style={styles.starStyle} />
+                            </View>
+                        </View>
+                        <View style={{ flex: 5 }}>
+                            <ScrollView showsVerticalScrollIndicator={false}>
+                                <View style={styles.Container}>
+                                    <ListFood DataFood={items.allItem} />
+                                </View>
+                            </ScrollView>
 
-                    </View>
-                </ScrollView>
-            </View>
-            <BottomSheet
-                draggable={false}
-                hasDraggableIcon
-                ref={bottomSheet}
-                height={400}>
-                <View style={styles.content}>
-                    <View style={styles.box1}>
-                        <AntDesign name="up" size={24} color="black" />
-                    </View>
-                    <View style={styles.box2}>
-                        <View style={styles.Shopimage}>
-                            <ImageBackground source={{ uri: 'https://img.traveltriangle.com/blog/wp-content/uploads/2018/12/cover-for-street-food-in-sydney.jpg' }}
-                                style={styles.imgstyle}
-                                borderRadius={10}>
-                            </ImageBackground>
                         </View>
-                        <View style={styles.Shopname}>
-                            <Text style={{ fontSize: 15, color: "gray" }}>Golden Double</Text>
-                            <Text style={{ fontSize: 15, color: 'gray' }}>Burger Muffin</Text>
-                            <Text style={{ fontSize: 13, color: 'orange' }}>Mcdonald'S</Text>
-                            <Text style={{ fontSize: 18, fontWeight: '500' }}>$15.00 </Text>
-                        </View>
-                    </View>
-                    <View style={styles.box3}>
-                        <View style={styles.num}>
-                            <Text style={{ fontSize: 20, fontWeight: '700' }}>Quantity</Text>
-                        </View>
-                        <View style={styles.increament}>
-                            <AntDesign name="minuscircle" size={40} color="orange" />
-                            <Text style={{ paddingHorizontal: 10, fontSize: 23 }}>2</Text>
-                            <Ionicons name="add-circle" size={50} color="orange" />
-                        </View>
-                    </View>
-                    <View style={styles.box4}></View>
-                    <View style={styles.box5}>
-                        <View style={{ backgroundColor: 'red', width: '90%', height: '40%', borderRadius: 10, backgroundColor: "#339966" }} >
-                            <Text style={{ textAlign: 'center', paddingTop: 11, fontWeight: '600', fontSize: 16, color: 'white' }}
-                                onPress={() => { bottomSheet.current.close(), navigation.navigate("Cart") }} >
-                                Add To Cart</Text>
-                        </View>
-                    </View>
+                    </ScrollView>
                 </View>
-            </BottomSheet>
-        </View>
-
+            </View>
+        </NativeBaseProvider>
     )
 }
 const styles = StyleSheet.create({

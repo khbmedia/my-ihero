@@ -9,8 +9,15 @@ import { NativeBaseProvider } from "native-base";
 import Color from "../../constant/Color";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AffiliateComponnent from "../Components/Affliate";
+import { useDispatch, useSelector } from 'react-redux';
+import { getWishlist, } from '../../store/affiliate/action'
 const Affiliate = ({ navigation }) => {
 	const [Data, setData] = useState([1, 2, 3, 4, 5])
+	const userData = useSelector(state => state.users.userData);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getWishlist(userData.token));
+	}, [dispatch])
 	return (
 		<NativeBaseProvider>
 			<View style={styles.container}>
